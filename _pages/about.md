@@ -3,23 +3,22 @@ layout: about
 title: about
 permalink: /
 subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+social: true  # includes social icons at the bottom of the page
 
 profile:
-  align: right
-  image: prof_pic.jpg
+  align: left
+  image: IMG_7102.png
   image_circular: false # crops the image to make it circular
-  address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
 
 news: true  # includes a list of news items
 latest_posts: true  # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true  # includes social icons at the bottom of the page
+
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Lingxiao Li is currently an independent researcher focusing on machine learning and computer vision. He received his bachelor's degree in computer science from University of Liverpool advised by [Prof. Xiaowei Huang](https://cgi.csc.liv.ac.uk/~xiaowei/) and his master's degree in computer science from Columbia University, working with [Prof. Junfeng Yang](http://www.cs.columbia.edu/~junfeng/) and [Prof. Asaf Cidon](https://www.asafcidon.com/). He also works closely with [Prof. Shuhui Wang](https://people.ucas.edu.cn/~wangshuhui?language=en) at Institute of Computing Technology, Chinese Academy of Sciences. He is seeking for Ph.D opportunities starting from 2024 Fall.
+
+In his free time, he is a big fan of Chopin and Mahler.
 
 Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
 
