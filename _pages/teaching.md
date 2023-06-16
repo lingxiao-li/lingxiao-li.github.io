@@ -12,7 +12,3 @@ nav_order: 5
 {% for post in site.teaching reversed %}
   {% include archive-single.html %}
 {% endfor %}
-
-<div class="col">
-  <a href="/assets/pdf/teaching/writing_python_libraries.pdf">Some notes</a> on writing Python libraries.
-</div>
