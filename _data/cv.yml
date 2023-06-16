@@ -50,7 +50,7 @@
         - Description 2.
       
 - title: Teaching
-  type: nested_list
+  type: time_table
   contents:
     - title: CSOR W4231 - Analysis of Algorithms, Spring 22
       institution: Columbia University, Computer Science Department
