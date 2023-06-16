@@ -2,11 +2,17 @@
 layout: page
 permalink: /teaching/
 title: teaching
-description: Materials for courses you taught. Replace this text with your description.
+description: Course I taught.
 nav: true
 nav_order: 5
 ---
 
-For now, this page is assumed to be a static description of your courses. You can convert it to a collection similar to `_projects/` so that you can have a dedicated page for each course.
+{% include base_path %}
 
-Organize your courses by years, topics, or universities, however you like!
+{% for post in site.teaching reversed %}
+  {% include archive-single.html %}
+{% endfor %}
+
+<div class="col">
+  <a href="/assets/pdf/teaching/writing_python_libraries.pdf">Some notes</a> on writing Python libraries.
+</div>
