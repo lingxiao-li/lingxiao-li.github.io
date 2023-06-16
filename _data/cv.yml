@@ -23,7 +23,7 @@
   contents:
     - title: Research Assistant
       institution: Department of Computer Science, Columbia University
-      year: Jan 2022 - May 2023
+      year: 2022 - 2023
       supervisor: Prof. Junfeng Yang and Prof. Asaf Cidon
       description:
         - Description 1.
@@ -35,7 +35,7 @@
             
     - title: Research Assistant
       institution: Department of Electrical Engineering, Columbia University
-      year: May 2021 - Jan 2022
+      year: 2021 - 2022
       supervisor: Prof. Zoran Kostic
       description:
         - Description 1.
@@ -43,7 +43,7 @@
 
     - title: Research Assistant
       institution: Institute of Computing Technology, Chinese Academy of Sciences
-      year: Aug 2021 - now
+      year: 2021 - now
       supervisor: Prof. Shuhui Wang
       description:
         - Description 1.
