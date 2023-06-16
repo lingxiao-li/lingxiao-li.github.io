@@ -21,9 +21,10 @@
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Research Assistant
+      institution: Department of Computer Science, Columbia University
+      time: Jan 2022 - May 2023
+      supervisor: Prof. Junfeng Yang and Prof. Asaf Cidon
       description:
         - Description 1.
         - Description 2.
@@ -31,16 +32,33 @@
           contents:
             - Sub-description 1.
             - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+            
+    - title: Research Assistant
+      institution: Department of Electrical Engineering, Columbia University
+      time: May 2021 - Jan 2022
+      supervisor: Prof. Zoran Kostic
       description:
         - Description 1.
         - Description 2.
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
+    - title: Research Assistant
+      institution: Institute of Computing Technology, Chinese Academy of Sciences
+      time: Aug 2021 - now
+      supervisor: Prof. Shuhui Wang
+      description:
+        - Description 1.
+        - Description 2.
+      
+- title: Teaching
+  type: nested_list
+  contents:
+    - title: CSOR W4231 - Analysis of Algorithms, Spring 22
+      institution: Columbia University, Computer Science Department
+      date: 2022-01-15
+      location: NYC, USA
+      items: 
+        - Graduate-level course
+        - Teaching assistant
 
 
 - title: Academic Interests
