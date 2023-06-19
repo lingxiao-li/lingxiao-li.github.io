@@ -5,7 +5,7 @@ layout: default
 <!-- about.html -->
       <div class="post">
         {% if page.profile -%}
-          <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+          <div class="profile text-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
             {%- if page.profile.image %}
               {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
 
@@ -36,7 +36,7 @@ layout: default
           
             <!-- Social -->
             {%- if page.social %}
-                  <div class="social float-left">
+                  <div class="social text-left">
                   <div class="contact-icons">
                   {% include social.html %}
                   </div>
@@ -51,7 +51,7 @@ layout: default
 
         <article>
           
-          <div class="bio">
+          <div class="clearfix">
             {{ content }}
           </div>
 
