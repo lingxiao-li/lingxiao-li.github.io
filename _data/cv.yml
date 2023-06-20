@@ -26,28 +26,23 @@
       year: 2022 - 2023
       advisor: Advised by Prof. Junfeng Yang and Prof. Asaf Cidon
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
+        - Monitor and adopt domain shifts at scale in the post-deployment phase to maintain a healthy and functional deep learning system.
             
     - title: Research Assistant
       institution: Department of Electrical Engineering, Columbia University
       year: 2021 - 2022
       advisor: Advised by Prof. Zoran Kostic
       description:
-        - Description 1.
-        - Description 2.
+        - Deployed and trained a customized YOLOv4 on Google Cloud Platform to track small objects in video from 12th floor eye bird camera, decorated the confounder in the training dataset to improve the detection accuracy.
+        - Deployed DeepSORT and achieved an average of over 95% counting accuracy for vehicles.
 
     - title: Research Assistant
       institution: Institute of Computing Technology, Chinese Academy of Sciences
       year: 2021 - now
       advisor: Advised by Prof. Shuhui Wang
       description:
-        - Description 1.
-        - Description 2.
+        - This research focuses on generating diverse images for an unseen category given only a few images.
+        - Achieve state-of-the-art few-shot image generation using GAN inversion to manipulate latent codes in hyperbolic space.
       
 - title: Teaching
   type: time_table
@@ -58,20 +53,20 @@
       location: NYC, USA
       items: 
         - Graduate-level course
-        - Teaching assistant
+        - Teaching Assistant
 
 
 - title: Academic Interests
   type: nested_list
   contents:
-    - title: Topic 1.
+    - title: Generative models.
       items: 
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
+        - GANs.
+        - Diffusion models.
+    - title: Domain generalization.
       items:
-        - Description 1.
-        - Description 2.
+        - Test time domain adaptation.
+    - title: Representation learning.
 
 - title: Other Interests
   type: list
