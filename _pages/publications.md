@@ -2,7 +2,7 @@
 layout: page
 permalink: /publications/
 title: publications
-description: (*) denotes equal contribution.
+description: (*) denotes equal contribution. Please see my Google Scholar[https://scholar.google.com/citations?user=F1Cu218AAAAJ] for a complete list. 
 years: [2023, 2022, 2018]
 nav: true
 nav_order: 1
