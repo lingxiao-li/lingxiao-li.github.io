@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-One paper submitted to [arXiv](https://arxiv.org/abs/2211.12347)!
+One paper has been submitted to [arXiv](https://arxiv.org/abs/2211.12347).
