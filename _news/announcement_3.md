@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-I graduated from Columbia!
+I graduated from [Columbia](https://www.engineering.columbia.edu/)!
