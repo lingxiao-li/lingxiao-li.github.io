@@ -32,3 +32,23 @@
 "Planck":
   - firstname: ["Max"]
     url: https://en.wikipedia.org/wiki/Max_Planck
+
+"Zhang":
+  - firstname: ["Yi"]
+    url: https://yizhang025.github.io/
+
+"Yang":
+  - firstname: ["Junfeng"]
+    url: http://www.cs.columbia.edu/~junfeng/
+
+"Cidon":
+  - firstname: ["Asaf"]
+    url: https://www.asafcidon.com/
+
+"Hao":
+  - firstname: ["Wei"]
+    url: https://scholar.google.com/citations?user=wtItOPoAAAAJ&hl=en
+
+"Wang":
+  - firstname: ["Shuhui"]
+    url: https://scholar.google.com/citations?user=h-JxBSYAAAAJ&hl=en
