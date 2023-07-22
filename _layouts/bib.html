@@ -133,6 +133,12 @@
           {{ entry.note | strip }}
         </div>
 
+
+      <!-- Notes -->
+        {%- if entry.notes -%}
+          <div class="notes">{{entry.notes}}</div>
+        {%- endif -%}
+
           <!-- Links/Buttons -->
           <div class="links">
           {%- if entry.abstract %}
