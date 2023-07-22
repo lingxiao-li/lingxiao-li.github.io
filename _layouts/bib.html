@@ -134,10 +134,11 @@
         </div>
 
 
-      <!-- Notes -->
-        {%- if entry.notes -%}
-          <div class="notes">{{entry.notes}}</div>
-        {%- endif -%}
+        <!-- Notes -->
+        <div class="Notes">
+          {%- if entry.notes %}
+            <a class="notes">{{entry.notes}}</a>
+          {%- endif %}
 
           <!-- Links/Buttons -->
           <div class="links">
