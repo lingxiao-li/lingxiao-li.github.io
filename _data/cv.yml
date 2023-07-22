@@ -4,7 +4,7 @@
     - name: Full Name
       value: Lingxiao Li
     - name: Languages
-      value: English, Chinese
+      value: Chinese, English
 
 - title: Education
   type: time_table
