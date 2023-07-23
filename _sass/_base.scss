@@ -619,6 +619,11 @@ footer.sticky-bottom {
         font-weight: bolder;
       }
 
+      .honor {
+        font-weight: bolder;
+        color: var(--global-text-color);
+      }
+
       .author {
         a {
           border-bottom: 1px dashed var(--global-theme-color);
