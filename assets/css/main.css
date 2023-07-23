@@ -606,6 +606,10 @@ footer.sticky-bottom {
 .publications ol.bibliography li .title {
   font-weight: bolder;
 }
+.publications ol.bibliography li .honor {
+  font-weight: bolder;
+  color: var(--global-text-color);
+}
 .publications ol.bibliography li .author a {
   border-bottom: 1px dashed var(--global-theme-color);
 }
