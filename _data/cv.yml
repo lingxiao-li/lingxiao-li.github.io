@@ -42,7 +42,7 @@
       advisor: Advised by Prof. Shuhui Wang
       description:
         - This research focuses on generating diverse images for an unseen category given only a few images.
-        - Achieve state-of-the-art few-shot image generation using GAN inversion to manipulate latent codes in hyperbolic space.
+        - Achieve state-of-the-art few-shot image generation with high quality and diversity using GAN inversion to manipulate latent codes in hyperbolic space.
       
 - title: Teaching
   type: time_table
