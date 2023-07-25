@@ -52,8 +52,10 @@
       year: 2022
       location: NYC, USA
       items: 
-        - Graduate-level course
-        - Teaching Assistant
+        - Instructor: Eleni Drinea
+        - Teaching Assistant for 400 students
+        - Developed course material, assignments and gave tutorials
+
 
 
 - title: Academic Interests
@@ -71,4 +73,5 @@
 - title: Other Interests
   type: list
   contents:
+    - <u>Volunteer:</u> Primary School Teacher, AIESEC Overseas Volunteer Program in Colombo, Sri Lanka, 2017
     - <u>Hobbies:</u> Classical Music, History, etc.
