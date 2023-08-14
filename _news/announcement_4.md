@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our [paper](https://arxiv.org/abs/2211.12347) is accepted by [ICCV](https://iccv2023.thecvf.com/submission.guidelines-361600-2-20-16.php)!
+One [paper](https://arxiv.org/abs/2211.12347) accepted by [ICCV 2023](https://iccv2023.thecvf.com/submission.guidelines-361600-2-20-16.php)!
