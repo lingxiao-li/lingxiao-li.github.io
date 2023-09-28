@@ -61,14 +61,15 @@
 - title: Academic Interests
   type: nested_list
   contents:
-    - title: Generative models.
+    - title: Unsupervised/Few-shot learning
+    - title: Generative models
       items: 
-        - GANs.
-        - Diffusion models.
-    - title: Domain generalization.
+        - GANs
+        - Diffusion models
+    - title: Domain generalization
       items:
-        - Test time domain adaptation.
-    - title: Representation learning.
+        - Test time domain adaptation
+    - title: Representation learning
 
 - title: Other Interests
   type: list
