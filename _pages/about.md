@@ -6,7 +6,7 @@ subtitle: Research Assistant
 organization: MMLab, Chinese University of Hong Kong
 profile:
   align: left
-  image: Profile_Photo_3.png
+  image: Profile_Photo.png
   image_circular: false # crops the image to make it circular
 
 news: true  # includes a list of news items
