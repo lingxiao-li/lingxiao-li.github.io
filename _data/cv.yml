@@ -17,10 +17,29 @@
       institution: University of Liverpool, Liverpool, UK
       year: 2020
 
+    - title: BSc (Hons) in Computer Science
+      institution: Xi’an Jiao-tong Liverpool University, Suzhou, China
+      year: 2020
+
 
 - title: Experience
   type: time_table
   contents:
+    - title: Research Assistant
+      institution: Department of Information Engineering, The Chinese University of Hong Kong
+      year: 2024 - now
+      advisor: Advised by Prof. Xiangyu Yue
+      description:
+        - Customized Image Editing and Generation with Diffusion Models, Generative Models Theory
+    
+    - title: Research Assistant
+      institution: Institute of Computing Technology, Chinese Academy of Sciences
+      year: 2021 - now
+      advisor: Advised by Prof. Shuhui Wang
+      description:
+        - This research focuses on generating diverse images for an unseen category given only a few images.
+        - Achieve state-of-the-art few-shot image generation with high quality and diversity using GAN inversion to manipulate latent codes in hyperbolic space.
+        
     - title: Research Assistant
       institution: Department of Computer Science, Columbia University
       year: 2022 - 2023
@@ -35,14 +54,6 @@
       description:
         - Deployed and trained a customized YOLOv4 on Google Cloud Platform to track small objects in video from 12th floor eye bird camera, decorated the confounder in the training dataset to improve the detection accuracy.
         - Deployed DeepSORT and achieved an average of over 95% counting accuracy for vehicles.
-
-    - title: Research Assistant
-      institution: Institute of Computing Technology, Chinese Academy of Sciences
-      year: 2021 - now
-      advisor: Advised by Prof. Shuhui Wang
-      description:
-        - This research focuses on generating diverse images for an unseen category given only a few images.
-        - Achieve state-of-the-art few-shot image generation with high quality and diversity using GAN inversion to manipulate latent codes in hyperbolic space.
       
 - title: Teaching
   type: time_table
@@ -69,7 +80,7 @@
     - title: Domain generalization
       items:
         - Test time domain adaptation
-    - title: Representation learning
+    - title: Representation Learning
 
 - title: Other Interests
   type: list
