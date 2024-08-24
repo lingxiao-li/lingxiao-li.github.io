@@ -32,9 +32,9 @@
       description:
         - Customized Image Editing and Generation with Diffusion Models, Generative Models Theory
     
-    - title: Research Assistant
+    - title: Research Intern
       institution: Institute of Computing Technology, Chinese Academy of Sciences
-      year: 2021 - now
+      year: 2021 - 2023
       advisor: Advised by Prof. Shuhui Wang
       description:
         - This research focuses on generating diverse images for an unseen category given only a few images.
@@ -77,6 +77,8 @@
       items: 
         - GANs
         - Diffusion models
+    - title: Multi-modal Learning
+        - LLM Guilded Content Generation
     - title: Domain generalization
       items:
         - Test time domain adaptation
