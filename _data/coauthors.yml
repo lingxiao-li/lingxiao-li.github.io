@@ -88,3 +88,23 @@
 "Gong":
   - firstname: ["Boqing"]
     url: http://boqinggong.info/
+
+"Zhang":
+  - firstname: ["Yuanyuan"]
+    url: https://scholar.google.com/citations?user=hcCYfu4AAAAJ&hl=en
+
+"Yang":
+  - firstname: ["Rui"]
+    url: https://scholar.xjtlu.edu.cn/en/persons/RYang
+
+"Guan":
+  - firstname: ["Runwei"]
+    url: https://sites.google.com/view/runwei-guan
+
+"LIM":
+  - firstname: ["Eng gee"]
+    url: https://scholar.google.com/citations?user=zHw8eegAAAAJ&hl=en
+
+"Yue":
+  - firstname: ["Yutao"]
+    url: https://www.xjtlu.edu.cn/en/departments/academic-departments/jitri/staff/yutao-yue
