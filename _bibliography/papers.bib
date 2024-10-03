@@ -58,6 +58,20 @@
 @String(CVPRW= {CVPRW})
 @String(CSVT = {IEEE TCSVT})
 
+@INPROCEEDINGS{Hao24,
+title	= {Nazar: Monitoring and Adapting ML Models on Mobile Devices},
+abbr={ASPLOS},
+author	= {Wei Hao and Zixi Wang and Lauren Hong and Lingxiao Li and Nader Karayanni and Chengzhi Mao and Junfeng Yang and Asaf Cidon},
+year	= {2024},
+abstract = {ML models are increasingly being pushed to mobile devices, for low-latency inference and offline operation. However, once the models are deployed, it is hard for ML operators to track their accuracy, which can degrade unpredictably (e.g., due to data drift). We design Nazar, the first end-to-end system for continuously monitoring and adapting models on mobile devices without requiring feedback from users. Our key observation is that often model degradation is due to a specific root cause, which may affect a large group of devices. Therefore, once Nazar detects a consistent degradation across a large number of devices, it employs a root cause analysis to determine the origin of the problem and applies a cause-specific adaptation. We evaluate Nazar on two computer vision datasets, and show it consistently boosts accuracy compared to existing approaches. On a dataset containing photos collected from driving cars, Nazar improves the accuracy on average by 15%.},
+booktitle	= {ACM International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)},
+selected = {true},
+//honor = {Oral Presentation [top 2.5%]},
+//award = {Oral},
+pdf = {https://arxiv.org/abs/2211.12347}
+}
+
+
 @INPROCEEDINGS{Li24,
 title	= {BIFRÖST: 3D-Aware Image compositing with Language Instructions},
 abbr={NIPS},
@@ -80,17 +94,6 @@ abstract = {Radar-based contactless cardiac monitoring has become a popular rese
 journal	= {arXiv preprint arXiv:2408.01672},
 selected = {true},
 pdf = {https://arxiv.org/abs/2408.01672}
-}
-
-@article{Hao23,
-title	= {Monitoring and Adapting ML Models on Mobile Devices},
-abbr={arXiv},
-author	= {Wei Hao and Zixi Wang and Lauren Hong and Lingxiao Li and Nader Karayanni and Chengzhi Mao and Junfeng Yang and Asaf Cidon},
-year	= {2023},
-abstract = {ML models are increasingly being pushed to mobile devices, for low-latency inference and offline operation. However, once the models are deployed, it is hard for ML operators to track their accuracy, which can degrade unpredictably (e.g., due to data drift). We design Nazar, the first end-to-end system for continuously monitoring and adapting models on mobile devices without requiring feedback from users. Our key observation is that often model degradation is due to a specific root cause, which may affect a large group of devices. Therefore, once Nazar detects a consistent degradation across a large number of devices, it employs a root cause analysis to determine the origin of the problem and applies a cause-specific adaptation. We evaluate Nazar on two computer vision datasets, and show it consistently boosts accuracy compared to existing approaches. On a dataset containing photos collected from driving cars, Nazar improves the accuracy on average by 15%.},
-journal	= {arXiv preprint arXiv:2305.07772},
-selected = {true},
-pdf = {https://arxiv.org/abs/2305.07772}
 }
 
 @INPROCEEDINGS{Li23,
