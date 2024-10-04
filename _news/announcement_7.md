@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper BIFROST was accepted to NIPS 2024! Code and paper coming soon.
+Our paper BIFROST accepted to NeurIPS 2024! Code and paper coming soon.
