@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper Nazar was accepted to ASPLOS 2025 Spring! Congrats to Wei and other coauthors!
+Our paper Nazar accepted to ASPLOS 2025 Spring! Congrats to Wei and other collaborators!
