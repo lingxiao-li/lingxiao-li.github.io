@@ -225,6 +225,52 @@
 <li>
 <!-- _layouts/bib.html -->
       <div class="row">
+        <div class="col-sm-2 abbr"><abbr class="badge">arXiv</abbr></div>
+
+        <!-- Entry bib key -->
+        <div id="Li24HypDAE" class="col-sm-8">
+        <!-- Title -->
+        <div class="title">Diffusion Autoencoders for Few-shot Image Generation in Hyperbolic Space</div>
+        <!-- Author -->
+        <div class="author">
+        
+
+        <em>Lingxiao Li</em>, Kaixuan Fan, <a href="http://boqinggong.info/" rel="external nofollow noopener" target="_blank">Boqing Gong</a>, and Xiangyu Yue</div>
+
+        <!-- Journal/Book title and date -->
+        
+        
+        <div class="periodical">
+          <em>arXiv preprint arXiv:2411.17784</em>, 2024
+        </div>
+        <div class="periodical">
+          
+        </div>
+
+
+          <!-- Honor -->
+
+          <!-- Links/Buttons -->
+          <div class="links">
+            <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+            <a href="https://arxiv.org/abs/2411.17784" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
+          </div>
+          
+          <div class="badges">
+            <span class="altmetric-embed" data-hide-no-mentions="true" data-hide-less-than="15" data-badge-type="2" data-badge-popover="right"></span>
+              <span class="__dimensions_badge_embed__" data-pmid="" data-hide-zero-citations="true" data-style="small_rectangle" data-legend="hover-right" style="margin-bottom: 3px;"></span>
+          </div>
+
+          <!-- Hidden abstract block -->
+          <div class="abstract hidden">
+            <p>Few-shot image generation aims to generate diverse and high-quality images for an unseen class given only a few examples in that class. However, existing methods often suffer from a trade-off between image quality and diversity while offering limited control over the attributes of newly generated images. In this work, we propose Hyperbolic Diffusion Autoencoders (HypDAE), a novel approach that operates in hyperbolic space to capture hierarchical relationships among images and texts from seen categories. By leveraging pre-trained foundation models, HypDAE generates diverse new images for unseen categories with exceptional quality by varying semantic codes or guided by textual instructions. Most importantly, the hyperbolic representation introduces an additional degree of control over semantic diversity through the adjustment of radii within the hyperbolic disk. Extensive experiments and visualizations demonstrate that HypDAE significantly outperforms prior methods by achieving a superior balance between quality and diversity with limited data and offers a highly controllable and interpretable generation process.</p>
+          </div>
+        </div>
+      </div>
+</li>
+<li>
+<!-- _layouts/bib.html -->
+      <div class="row">
         <div class="col-sm-2 abbr"><abbr class="badge">ASPLOS</abbr></div>
 
         <!-- Entry bib key -->
@@ -358,53 +404,6 @@
           <!-- Hidden abstract block -->
           <div class="abstract hidden">
             <p>Radar-based contactless cardiac monitoring has become a popular research direction recently, but the fine-grained electrocardiogram (ECG) signal is still hard to reconstruct from millimeter-wave radar signal. The key obstacle is to decouple the cardiac activities in the electrical domain (i.e., ECG) from that in the mechanical domain (i.e., heartbeat), and most existing research only uses pure data-driven methods to map such domain transformation as a black box. Therefore, this work first proposes a signal model for domain transformation, and then a novel deep learning framework called radarODE is designed to fuse the temporal and morphological features extracted from radar signals and generate ECG. In addition, ordinary differential equations are embedded in radarODE as a decoder to provide morphological prior, helping the convergence of the model training and improving the robustness under body movements. After being validated on the dataset, the proposed radarODE achieves better performance compared with the benchmark in terms of missed detection rate, root mean square error, Pearson correlation coefficient with the improvement of 9%, 16% and 19%, respectively. The validation results imply that radarODE is capable of recovering ECG signals from radar signals with high fidelity and can be potentially implemented in real-life scenarios.</p>
-          </div>
-        </div>
-      </div>
-</li>
-<li>
-<!-- _layouts/bib.html -->
-      <div class="row">
-        <div class="col-sm-2 abbr"><abbr class="badge">ICCV</abbr></div>
-
-        <!-- Entry bib key -->
-        <div id="Li23" class="col-sm-8">
-        <!-- Title -->
-        <div class="title">The Euclidean Space is Evil: Hyperbolic Attribute Editing for Few-shot Image Generation</div>
-        <!-- Author -->
-        <div class="author">
-        
-
-        <em>Lingxiao Li</em>, Yi Zhang, and <a href="https://scholar.google.com/citations?user=h-JxBSYAAAAJ&amp;hl=en" rel="external nofollow noopener" target="_blank">Shuhui Wang</a>
-</div>
-
-        <!-- Journal/Book title and date -->
-        
-        
-        <div class="periodical">
-          <em>In International Conference on Computer Vision (ICCV)</em>, 2023
-        </div>
-        <div class="periodical">
-          
-        </div>
-
-
-          <!-- Honor -->
-
-          <!-- Links/Buttons -->
-          <div class="links">
-            <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
-            <a href="https://openaccess.thecvf.com/content/ICCV2023/html/Li_The_Euclidean_Space_is_Evil_Hyperbolic_Attribute_Editing_for_Few-shot_ICCV_2023_paper.html" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">PDF</a>
-          </div>
-          
-          <div class="badges">
-            <span class="altmetric-embed" data-hide-no-mentions="true" data-hide-less-than="15" data-badge-type="2" data-badge-popover="right"></span>
-              <span class="__dimensions_badge_embed__" data-pmid="" data-hide-zero-citations="true" data-style="small_rectangle" data-legend="hover-right" style="margin-bottom: 3px;"></span>
-          </div>
-
-          <!-- Hidden abstract block -->
-          <div class="abstract hidden">
-            <p>Few-shot image generation is a challenging task since it aims to generate diverse new images for an unseen category with only a few images. Existing methods suffer from the trade-off between the quality and diversity of generated images. To tackle this problem, we propose Hyperbolic Attribute Editing(HAE), a simple yet effective method. Unlike prior arts that work in Euclidean space, HAE captures the hierarchy among images using data from seen categories in hyperbolic space. Given a well-trained HAE, images of unseen categories can be generated by moving the latent code of a given image toward any  meaningful directions in the Poincaré disk with a fixing radius. Most importantly, the hyperbolic space allows us to control the semantic diversity of the generated images by setting different radii in the disk. Extensive experiments and visualizations demonstrate that HAE is capable of not only generating images with promising quality and diversity using limited data but achieving a highly controllable and interpretable editing process.</p>
           </div>
         </div>
       </div>
