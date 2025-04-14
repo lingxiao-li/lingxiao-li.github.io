@@ -72,15 +72,17 @@
 - title: Academic Interests
   type: nested_list
   contents:
-    - title: Unsupervised/Few-shot learning
-    - title: Generative models
+    - title: Unsupervised/Few-shot Learning
+    - title: Generative Models
       items: 
-        - Autoregressive models
-        - Diffusion models
+        - Autoregressive Models
+        - Diffusion Models
     - title: Multi-modal Learning
+      items:
         - Multi-modal LLM
     - title: Representation Learning
-        - Hierarchical learning in Hyperbolic Space
+      items:
+        - Hierarchical Learning in Hyperbolic Space
 
 - title: Other Interests
   type: list
