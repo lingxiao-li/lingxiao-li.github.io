@@ -17,7 +17,7 @@
       institution: University of Liverpool, Liverpool, UK
       year: 2020
 
-    - title: BSc (Hons) in Computer Science
+    - title: BSc in Information and Computing Science
       institution: Xi’an Jiao-tong Liverpool University, Suzhou, China
       year: 2020
 
@@ -75,14 +75,12 @@
     - title: Unsupervised/Few-shot learning
     - title: Generative models
       items: 
-        - GANs
+        - Autoregressive models
         - Diffusion models
     - title: Multi-modal Learning
-        - LLM Guilded Content Generation
-    - title: Domain generalization
-      items:
-        - Test time domain adaptation
+        - Multi-modal LLM
     - title: Representation Learning
+        - Hierarchical learning in Hyperbolic Space
 
 - title: Other Interests
   type: list
