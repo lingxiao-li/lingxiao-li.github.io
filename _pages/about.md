@@ -15,6 +15,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 
 ---
+
 **Bio:** Lingxiao Li is an incoming PhD student in Computing & Data Sciences at Boston University, where he will be advised by [Prof. Boqing Gong](http://boqinggong.info/). He is currently a research assistant at [MMLab](https://mmlab.ie.cuhk.edu.hk/index.html), The Chinese University of Hong Kong, working with [Prof. Xiangyu Yue](https://xyue.io/). 
 
 He received his bachelor's degree with honours in Computer Science from the University of Liverpool, advised by [Prof. Xiaowei Huang](https://cgi.csc.liv.ac.uk/~xiaowei/), and earned his master's degree in Computer Science from Columbia University, where he worked with [Prof. Junfeng Yang](http://www.cs.columbia.edu/~junfeng/) and [Prof. Asaf Cidon](https://www.asafcidon.com/). He also collaborates closely with [Prof. Shuhui Wang](https://people.ucas.edu.cn/~wangshuhui?language=en) at the Institute of Computing Technology, Chinese Academy of Sciences, and [Prof. Chenyu You](https://chenyuyou.me/) at Stony Brook University.
