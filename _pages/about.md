@@ -3,7 +3,7 @@ layout: about
 title: about
 permalink: /
 subtitle: Incoming PhD student
-organization: Faculty of Computing and Data Science, Boston University
+organization: Computing and Data Science, Boston University
 profile:
   align: left
   image: Profile_Photo.jpg
