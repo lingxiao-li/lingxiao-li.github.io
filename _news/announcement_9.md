@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper HypDAE accepted to ICCV 2025!
+Our paper HypDAE accepted to [ICCV 2025](https://iccv.thecvf.com/)!
