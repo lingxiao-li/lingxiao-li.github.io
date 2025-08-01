@@ -6,7 +6,7 @@ subtitle: PhD student
 organization: Computing and Data Science, Boston University
 profile:
   align: left
-  image: Profile_Photo.jpg
+  image: IMG_3103.png
   image_circular: false # crops the image to make it circular
 
 news: true  # includes a list of news items
