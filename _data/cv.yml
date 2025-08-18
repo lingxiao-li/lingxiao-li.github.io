@@ -9,6 +9,11 @@
 - title: Education
   type: time_table
   contents:
+    - title: PhD in Computing & Data Sciences
+      institution: Boston University, Boston, USA
+      adviser: Prof. Boqing Gong
+      year: 2025
+      
     - title: MSc in Computer Science
       institution: Columbia University, New York, USA
       year: 2022
@@ -25,6 +30,13 @@
 - title: Experience
   type: time_table
   contents:
+    - title: Research Assistant
+      institution: Faculty of Computing & Data Sciences, Boston University
+      year: 2025 - now
+      advisor: Advised by Prof. Boqing Gong
+      description:
+        - Real-time video stylization
+        - Fine-grained Visual CoT for VLM
     - title: Research Assistant
       institution: Department of Information Engineering, The Chinese University of Hong Kong
       year: 2024 - now
