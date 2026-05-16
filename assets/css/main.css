@@ -318,8 +318,18 @@ blockquote {
   color: var(--global-text-color);
   transition-property: all 0.2s ease-in-out;
 }
+.navbar.navbar-light .navbar-brand.social a .x-twitter-icon {
+  width: 1em;
+  height: 1em;
+  fill: var(--global-text-color);
+  transition: fill 0.2s ease-in-out;
+  vertical-align: -0.125em;
+}
 .navbar.navbar-light .navbar-brand.social a:hover i::before {
   color: var(--global-theme-color);
+}
+.navbar.navbar-light .navbar-brand.social a:hover .x-twitter-icon {
+  fill: var(--global-theme-color);
 }
 
 .navbar-toggler .icon-bar {
@@ -373,8 +383,18 @@ blockquote {
   color: var(--global-text-color);
   transition-property: all 0.2s ease-in-out;
 }
+.social .contact-icons a .x-twitter-icon {
+  width: 1em;
+  height: 1em;
+  fill: var(--global-text-color);
+  transition: fill 0.2s ease-in-out;
+  vertical-align: -0.125em;
+}
 .social .contact-icons a:hover i::before {
   color: var(--global-theme-color);
+}
+.social .contact-icons a:hover .x-twitter-icon {
+  fill: var(--global-theme-color);
 }
 .social .contact-note {
   font-size: 0.8rem;
@@ -424,6 +444,31 @@ footer.sticky-bottom {
   background-color: transparent;
   border: none;
   color: var(--global-text-color);
+}
+
+table.table-cv {
+  background-color: transparent !important;
+}
+table.table-cv td,
+table.table-cv th {
+  padding: 1px;
+}
+
+p.location {
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+i.iconlocation {
+  color: var(--global-theme-color);
+  font-size: 0.8rem;
+}
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -50px;
+  visibility: hidden;
 }
 
 @media (min-width: 768px) {
@@ -584,7 +629,6 @@ footer.sticky-bottom {
   max-width: 200px;
 }
 .publications ol.bibliography li .abbr {
-  height: 2rem;
   margin-bottom: 0.5rem;
 }
 .publications ol.bibliography li .abbr abbr {
@@ -655,6 +699,10 @@ footer.sticky-bottom {
 }
 .publications ol.bibliography li .badges span:hover {
   text-decoration: underline;
+}
+.publications ol.bibliography li .badges img {
+  margin-right: 0.5rem;
+  vertical-align: middle;
 }
 .publications ol.bibliography li .hidden {
   font-size: 0.875rem;
