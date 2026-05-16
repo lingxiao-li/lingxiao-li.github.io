@@ -17,7 +17,7 @@ social: true  # includes social icons at the bottom of the page
 ---
 
   
-**Research:** As a researcher in machine learning, Lingxiao's research interests lie in building machine learning systems with strong generalization under minimal supervision. His current focus spans **Generative Models**, **Chain-of-Thought Reasoning**, and **Vision Language Models (VLMs)**. 
+**Research:** As a researcher in machine learning, Lingxiao's research interests lie in building machine learning systems with strong generalization under minimal supervision. His current focus is on **Generative Models** and **Vision-Language Models (VLMs)**. 
 
 **Bio:** Lingxiao Li is a PhD student in Computing & Data Sciences at Boston University, where he is advised by [Prof. Boqing Gong](https://boqinggong.github.io/). 
 
