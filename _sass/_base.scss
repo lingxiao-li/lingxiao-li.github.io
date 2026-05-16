@@ -239,9 +239,21 @@ blockquote {
         transition-property: all 0.2s ease-in-out;
       }
 
+      .x-twitter-icon {
+        width: 1em;
+        height: 1em;
+        fill: var(--global-text-color);
+        transition: fill 0.2s ease-in-out;
+        vertical-align: -0.125em;
+      }
+
       &:hover {
         i::before {
           color: var(--global-theme-color);
+        }
+
+        .x-twitter-icon {
+          fill: var(--global-theme-color);
         }
       }
     }
@@ -313,9 +325,21 @@ blockquote {
         transition-property: all 0.2s ease-in-out;
       }
 
+      .x-twitter-icon {
+        width: 1em;
+        height: 1em;
+        fill: var(--global-text-color);
+        transition: fill 0.2s ease-in-out;
+        vertical-align: -0.125em;
+      }
+
       &:hover {
         i::before {
           color: var(--global-theme-color);
+        }
+
+        .x-twitter-icon {
+          fill: var(--global-theme-color);
         }
       }
     }
@@ -380,6 +404,32 @@ footer.sticky-bottom {
   background-color: transparent;
   border: none;
   color: var(--global-text-color);
+}
+
+table.table-cv {
+  background-color: transparent !important;
+
+  td,
+  th {
+    padding: 1px;
+  }
+}
+
+p.location {
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+i.iconlocation {
+  color: var(--global-theme-color);
+  font-size: 0.8rem;
+}
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -50px;
+  visibility: hidden;
 }
 
 // Repositories
@@ -591,7 +641,6 @@ footer.sticky-bottom {
       }
 
       .abbr {
-        height: 2rem;
         margin-bottom: 0.5rem;
 
         abbr {
@@ -680,6 +729,11 @@ footer.sticky-bottom {
           &:hover {
             text-decoration: underline;
           }
+        }
+
+        img {
+          margin-right: 0.5rem;
+          vertical-align: middle;
         }
       }
 
