@@ -18,11 +18,17 @@
   - firstname: ["Wei"]
     url: https://scholar.google.com/citations?user=wtItOPoAAAAJ&hl=en
 
+"Fan":
+  - firstname: ["Kaixuan"]
+    url: https://scholar.google.com/citations?user=V2KHBeUAAAAJ&hl=zh-CN
+
 "Wang":
   - firstname: ["Shuhui"]
     url: https://scholar.google.com/citations?user=h-JxBSYAAAAJ&hl=en
   - firstname: ["Yifan"]
     url: https://yfwang.me/
+  - firstname: ["Zixi"]
+    url: https://clairezixiwang.github.io/
 
 "Mao":
   - firstname: ["Chengzhi"]
@@ -31,6 +37,14 @@
 "Huang":
   - firstname: ["Xin"]
     url: https://scholar.google.com/citations?user=-0bYA7kAAAAJ&hl=en
+
+"Hong":
+  - firstname: ["Lauren"]
+    url: https://qqqube.github.io
+
+"Karayanni":
+  - firstname: ["Nader"]
+    url: https://scholar.google.com/citations?user=GrLlgkUAAAAJ&hl=en
 
 "Dai":
   - firstname: ["Xili"]
@@ -75,3 +89,11 @@
 "Tang":
   - firstname: ["Chen"]
     url: https://www.chentang.cc/
+
+"Qing":
+  - firstname: ["Yuan"]
+    url: https://yuanqing-ai.github.io/
+
+"Xiao":
+  - firstname: ["Chang"]
+    url: https://chang.engineer
