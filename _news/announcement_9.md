@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper [HypDAE](https://arxiv.org/abs/2411.17784) accepted to [ICCV 2025](https://iccv.thecvf.com/)! Project page: [HypDAE](https://lingxiao-li.github.io/hypdae.github.io/). Code: [lingxiao-li/HypDAE](https://github.com/lingxiao-li/HypDAE).
+Our paper [HypDAE](https://arxiv.org/abs/2411.17784) accepted to [ICCV 2025](https://iccv.thecvf.com/)! [Project page](https://lingxiao-li.github.io/hypdae.github.io/) and [code](https://github.com/lingxiao-li/HypDAE) are released!
