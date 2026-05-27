@@ -1,10 +1,14 @@
 "Zhang":
   - firstname: ["Yi"]
     url: https://yizhang025.github.io/
+  - firstname: ["Yuanyuan"]
+    url: https://scholar.google.com/citations?user=hcCYfu4AAAAJ&hl=en
 
 "Yang":
   - firstname: ["Junfeng"]
     url: http://www.cs.columbia.edu/~junfeng/
+  - firstname: ["Rui"]
+    url: https://scholar.xjtlu.edu.cn/en/persons/RYang
 
 "Cidon":
   - firstname: ["Asaf"]
@@ -17,6 +21,8 @@
 "Wang":
   - firstname: ["Shuhui"]
     url: https://scholar.google.com/citations?user=h-JxBSYAAAAJ&hl=en
+  - firstname: ["Yifan"]
+    url: https://yfwang.me/
 
 "Mao":
   - firstname: ["Chengzhi"]
@@ -41,6 +47,8 @@
 "Yue":
   - firstname: ["Xiangyu"]
     url: https://xyue.io/
+  - firstname: ["Yutao"]
+    url: https://www.xjtlu.edu.cn/en/departments/academic-departments/jitri/staff/yutao-yue
 
 "Li":
   - firstname: ["Weihong"]
@@ -49,18 +57,8 @@
 "Gong":
   - firstname: ["Kaixiong"]
     url: https://kxgong.github.io/
-
-"Gong":
   - firstname: ["Boqing"]
     url: https://boqinggong.github.io/
-
-"Zhang":
-  - firstname: ["Yuanyuan"]
-    url: https://scholar.google.com/citations?user=hcCYfu4AAAAJ&hl=en
-
-"Yang":
-  - firstname: ["Rui"]
-    url: https://scholar.xjtlu.edu.cn/en/persons/RYang
 
 "Guan":
   - firstname: ["Runwei"]
@@ -70,10 +68,6 @@
   - firstname: ["Eng Gee"]
     url: https://scholar.google.com/citations?user=zHw8eegAAAAJ&hl=en
 
-"Yue":
-  - firstname: ["Yutao"]
-    url: https://www.xjtlu.edu.cn/en/departments/academic-departments/jitri/staff/yutao-yue
-
 "You":
   - firstname: ["Chenyu"]
     url: https://chenyuyou.me/
@@ -81,7 +75,3 @@
 "Tang":
   - firstname: ["Chen"]
     url: https://www.chentang.cc/
-
-"Wang":
-  - firstname: ["Yifan"]
-    url: https://yfwang.me/
