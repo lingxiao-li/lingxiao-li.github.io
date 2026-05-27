@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper Nazar accepted to [ASPLOS 2025](https://www.asplos-conference.org/asplos2025/index.html) Spring! Congrats to Wei and other collaborators!
+Our paper [Nazar](https://arxiv.org/abs/2305.07772) accepted to [ASPLOS 2025](https://www.asplos-conference.org/asplos2025/index.html) Spring! Congrats to Wei and other collaborators!
