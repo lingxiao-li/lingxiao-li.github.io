@@ -436,6 +436,10 @@ a.anchor {
   margin-top: 2.5rem;
 }
 
+.news-section + .selected-papers-section {
+  margin-top: 5rem;
+}
+
 // Repositories
 
 @media (min-width: 768px) {
