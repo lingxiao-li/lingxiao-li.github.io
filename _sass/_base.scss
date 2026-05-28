@@ -550,6 +550,10 @@ a.anchor {
 // News
 
 .news {
+  th {
+    white-space: nowrap;
+  }
+
   .news-scroll {
     max-height: 60vw;
     overflow-y: auto;
