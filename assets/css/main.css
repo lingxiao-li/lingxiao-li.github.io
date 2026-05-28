@@ -471,6 +471,10 @@ a.anchor {
   visibility: hidden;
 }
 
+.about-section {
+  margin-top: 2.5rem;
+}
+
 @media (min-width: 768px) {
   .repo {
     max-width: 50%;
