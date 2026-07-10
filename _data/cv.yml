@@ -3,101 +3,114 @@
   contents:
     - name: Full Name
       value: Lingxiao Li
-    - name: Languages
-      value: Chinese, English
+    - name: Address
+      value: CDS 908, 665 Commonwealth Ave, Boston, MA, 02215
+    - name: Phone
+      value: (+1) 5714739879
+    - name: Email
+      value: lxl@bu.edu
+    - name: Website
+      value: <a href="https://lingxiao-li.github.io/">lingxiao-li.github.io</a>
+
+- title: Interests
+  type: list
+  contents:
+    - Generative Models, Vision-language Models
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD in Computing & Data Sciences
-      institution: Boston University, Boston, USA
-      adviser: Prof. Boqing Gong
-      year: 2030 (expected)
-      
-    - title: MSc in Computer Science
-      institution: Columbia University, New York, USA
-      year: 2022
+    - title: Doctor of Philosophy in Computing & Data Sciences
+      institution: Boston University, Boston, US
+      year: Sep. 2025 - present
+      advisor: Advisor&#58; Prof. Boqing Gong
 
-    - title: BSc (Hons) in Computer Science
+    - title: Master of Science in Computer Science
+      institution: Columbia University, New York, US
+      year: Jan. 2021 - May 2022
+
+    - title: Bachelor of Science with Honours in Computer Science
       institution: University of Liverpool, Liverpool, UK
-      year: 2020
+      year: Sep. 2018 - Jul. 2020
 
-    - title: BSc in Information and Computing Science
-      institution: Xi’an Jiao-tong Liverpool University, Suzhou, China
-      year: 2020
+    - title: Bachelor of Science in Information and Computing Science
+      institution: Xi’an Jiao-tong Liverpool University, Suzhou, CN
+      year: Sep. 2016 - Jul. 2020
 
-
-- title: Experience
-  type: time_table
-  contents:
-    - title: Research Assistant
-      institution: Faculty of Computing & Data Sciences, Boston University
-      year: Sep. 2025 - now
-      advisor: Advised by Prof. Boqing Gong
-      description:
-        - Real-time video stylization
-        - Fine-grained Visual CoT for VLM
-    - title: Research Assistant
-      institution: Department of Information Engineering, The Chinese University of Hong Kong
-      year: Jan. 2024 - Jul. 2025
-      advisor: Advised by Prof. Xiangyu Yue
-      description:
-        - Customized Image Editing and Generation with Diffusion Models, Generative Models Theory
-    
-    - title: Research Intern
-      institution: Institute of Computing Technology, Chinese Academy of Sciences
-      year: Aug. 2021 - Jul. 2023
-      advisor: Advised by Prof. Shuhui Wang
-      description:
-        - This research focuses on generating diverse images for an unseen category given only a few images.
-        - Achieve state-of-the-art few-shot image generation with high quality and diversity using GAN inversion to manipulate latent codes in hyperbolic space.
-        
-    - title: Research Assistant
-      institution: Department of Computer Science, Columbia University
-      year: Jan. 2022 - May. 2023
-      advisor: Advised by Prof. Junfeng Yang and Prof. Asaf Cidon
-      description:
-        - Monitor and adopt domain shifts at scale in the post-deployment phase to maintain a healthy and functional deep learning system.
-            
-    - title: Research Assistant
-      institution: Department of Electrical Engineering, Columbia University
-      year: May. 2021 - Dec. 2021
-      advisor: Advised by Prof. Zoran Kostic
-      description:
-        - Deployed and trained a customized YOLOv4 on Google Cloud Platform to track small objects in video from 12th floor eye bird camera, decorated the confounder in the training dataset to improve the detection accuracy.
-        - Deployed DeepSORT and achieved an average of over 95% counting accuracy for vehicles.
-      
-- title: Teaching
-  type: time_table
-  contents:
-    - title: CSOR W4231 - Analysis of Algorithms, Spring 22
-      institution: Department of Computer Science, Columbia University
-      year: 2022
-      location: NYC, USA
-      items: 
-        - <u>Instructor:</u> Eleni Drinea
-        - Teaching Assistant for 400 students
-        - Developed course material, assignments and gave tutorials
-
-
-
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Unsupervised/Few-shot Learning
-    - title: Generative Models
-      items: 
-        - Autoregressive Models
-        - Diffusion Models
-    - title: Multi-modal Learning
-      items:
-        - Multi-modal LLM
-    - title: Representation Learning
-      items:
-        - Hierarchical Learning in Hyperbolic Space
-
-- title: Other Interests
+- title: Publications
   type: list
   contents:
-    - <u>Volunteer:</u> Primary School Teacher, AIESEC Overseas Volunteer Program in Colombo, Sri Lanka, 2017
-    - <u>Hobbies:</u> Classical Music, History, etc.
+    - '<strong>Lingxiao Li</strong>, Max Whitton, Ledell Wu and Boqing Gong. "GenScale&#58; A Benchmark for Relative Object Scale in Image Generation and Editing." In <em>Submission</em>, 2026. <a href="https://arxiv.org/pdf/2511.17731">[PDF]</a>'
+    - 'Yuan Qing*, Kunyu Zheng*, <strong>Lingxiao Li*</strong>, Boqing Gong, Chang Xiao. "Moiré Video Authentication&#58; A Physical Signature Against AI Video Generation." In <em>European Conference on Computer Vision (<strong>ECCV</strong>)</em>, 2026. <a href="https://arxiv.org/pdf/2604.01654">[PDF]</a>'
+    - '<strong>Lingxiao Li</strong>, Yifan Wang, Xinyan Gao, Chen Tang, Xiangyu Yue, and Chenyu You. "VisReason&#58; A Large-Scale Dataset for Visual Chain-of-Thought Reasoning." In <em>European Conference on Computer Vision (<strong>ECCV</strong>)</em>, 2026. <a href="https://arxiv.org/pdf/2511.17731">[PDF]</a>'
+    - '<strong>Lingxiao Li</strong>, Kaixuan Fan, Boqing Gong, and Xiangyu Yue. "HypDAE&#58; Hyperbolic Diffusion Autoencoders for Hierarchical Few-shot Image Generation." In <em>International Conference on Computer Vision (<strong>ICCV</strong>)</em>, 2025. <a href="https://arxiv.org/pdf/2411.17784">[PDF]</a>'
+    - '<strong>Lingxiao Li</strong>, Kaixiong Gong, Weihong Li, Xili Dai, Tao Chen, Xiaojun Yuan, and Xiangyu Yue. "BIFRÖST&#58; 3D-Aware Image Compositing with Language Instructions." In <em>Conference on Neural Information Processing Systems (<strong>NeurIPS</strong>)</em>, 2024. <a href="https://arxiv.org/pdf/2410.19079">[PDF]</a>'
+    - '<strong>Lingxiao Li</strong>, Yi Zhang, and Shuhui Wang. "The Euclidean Space is Evil&#58; Hyperbolic Attribute Editing for Few-shot Image Generation." In <em>International Conference on Computer Vision (<strong>ICCV</strong>)</em>, 2023. <a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Li_The_Euclidean_Space_is_Evil_Hyperbolic_Attribute_Editing_for_Few-shot_ICCV_2023_paper.pdf">[PDF]</a>'
+    - 'Yuanyuan Zhang, Ruiwei Guan, <strong>Lingxiao Li</strong>, Rui Yang, Yutao Yue, and Eng Gee Lim. "RadarODE&#58; An ODE-based ECG Recovery and Auto-segmentation Model from Millimeter-wave Radar." In <em>Transactions on Mobile Computing (<strong>TMC</strong>). IEEE</em>, 2025. <a href="https://arxiv.org/pdf/2408.01672">[PDF]</a>'
+    - 'Wei Hao, Zixi Wang, Lauren Hong, <strong>Lingxiao Li</strong>, Nader Karayanni, Chengzhi Mao, Junfeng Yang, and Asaf Cidon. "Nazar&#58; Monitoring and Adapting ML Models on Mobile Devices." In <em>ACM International Conference on Architectural Support for Programming Languages and Operating Systems (<strong>ASPLOS</strong>)</em>, 2025. <a href="https://arxiv.org/pdf/2305.07772">[PDF]</a>'
+    - 'Congwei Ni, Sihan Cheng, Xutao Wang, Tianyun Hu, Zhenjin Dai, Dongliang Zhang, <strong>Lingxiao Li</strong>, and Xin Huang. "Model Checking the Reliability of Data Center Network." In <em>International Conference on Information Technology in Medicine and Education (<strong>ITME</strong>). IEEE</em>, 2018. <a href="https://ieeexplore.ieee.org/abstract/document/8589429/">[PDF]</a>'
+
+- title: Professional Experience
+  type: time_table
+  contents:
+    - title: Research Scientist Intern
+      institution: Creatify AI, Mountain View, US
+      year: May. 2026 - Aug. 2026
+      advisor: Advisor&#58; Ledell Wu and Prof. Boqing Gong
+      description:
+        - Correcting Relative Object Scale in Image Generation
+        - Self-Improved Harness with MLLM Agent for Automatic Fine-grained Video Artifact Detection
+
+    - title: Research Assistant
+      institution: Faculty of Computing & Data Sciences, Boston University, Boston, US
+      year: Sep. 2025 - present
+      advisor: Advisor&#58; Prof. Boqing Gong
+      description:
+        - Benchmarking and Correcting Object Size Accuracy in Generative Models
+        - AI For Science (Fiber-optic Imaging)
+        - Physical Signatures Against AI Video Generation
+
+    - title: Research Assistant
+      institution: MMLab, The Chinese University of Hong Kong, Hong Kong SAR
+      year: Dec. 2023 - Jul. 2025
+      advisor: Advisor&#58; Prof. Xiangyu Yue
+      description:
+        - LLM Guided 3D-Aware Image Composition (NeurIPS ’24)
+        - Diffusion Autoencoders for Hierarchical Few-shot Image Generation (ICCV ’25)
+
+    - title: Research Intern
+      institution: Institute of Computing Technology, Chinese Academy of Sciences, Beijing, CN
+      year: Jul. 2021 - Mar. 2023
+      advisor: Advisor&#58; Prof. Shuhui Wang
+      description:
+        - Few-shot Image Generation in Hyperbolic Space (ICCV ’23)
+
+    - title: Research Assistant
+      institution: Department of Computer Science, Columbia University, New York, US
+      year: Jan. 2022 - Dec. 2022
+      advisor: Advisor&#58; Prof. Junfeng Yang and Prof. Asaf Cidon
+      description:
+        - Monitoring and Adapting to Domain Shift Across Millions of Edge Devices (ASPLOS ’25)
+
+- title: Teaching Experience
+  type: time_table
+  contents:
+    - title: CSOR W4231 - Analysis of Algorithms
+      institution: Columbia University, New York, US
+      year: Spring 2022
+      advisor: Instructor&#58; Eleni Drinea
+      description:
+        - Teaching Assistant for 250 students
+        - Developed course material, assignments and gave tutorials
+
+- title: Skills
+  type: list
+  contents:
+    - '<strong>Frameworks&#58;</strong> Pytorch, TensorFlow, Keras, OpenCV'
+    - '<strong>Programming Languages&#58;</strong> Python, Java, Matlab, LaTeX, HTML, SQL, JavaScript, Swift, PHP'
+
+- title: Services
+  type: list
+  contents:
+    - '<strong>Conference Reviewer&#58;</strong> CVPR 2025-2026, ICCV 2025, ECCV 2024-2026, ICML 2024-2025, NeurIPS 2024-2026, ICLR 2024-2026, AISTATS 2025-2026, WACV 2025-2027, AAAI 2025-2027'
+    - '<strong>Journal Reviewer&#58;</strong> TPAMI, IJCV, Pattern Recognition'
