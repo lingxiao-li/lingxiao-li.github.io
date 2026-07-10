@@ -40,7 +40,7 @@
 - title: Publications
   type: list
   contents:
-    - '<strong>Lingxiao Li</strong>, Max Whitton, Ledell Wu and Boqing Gong. "GenScale&#58; A Benchmark for Relative Object Scale in Image Generation and Editing." In <em>Submission</em>, 2026. <a href="https://arxiv.org/pdf/2511.17731">[PDF]</a>'
+    - '<strong>Lingxiao Li</strong>, Max Whitton, Ledell Wu and Boqing Gong. "GenScale&#58; A Benchmark for Relative Object Scale in Image Generation and Editing." In <em>Submission</em>, 2026.'
     - 'Yuan Qing*, Kunyu Zheng*, <strong>Lingxiao Li*</strong>, Boqing Gong, Chang Xiao. "Moiré Video Authentication&#58; A Physical Signature Against AI Video Generation." In <em>European Conference on Computer Vision (<strong>ECCV</strong>)</em>, 2026. <a href="https://arxiv.org/pdf/2604.01654">[PDF]</a>'
     - '<strong>Lingxiao Li</strong>, Yifan Wang, Xinyan Gao, Chen Tang, Xiangyu Yue, and Chenyu You. "VisReason&#58; A Large-Scale Dataset for Visual Chain-of-Thought Reasoning." In <em>European Conference on Computer Vision (<strong>ECCV</strong>)</em>, 2026. <a href="https://arxiv.org/pdf/2511.17731">[PDF]</a>'
     - '<strong>Lingxiao Li</strong>, Kaixuan Fan, Boqing Gong, and Xiangyu Yue. "HypDAE&#58; Hyperbolic Diffusion Autoencoders for Hierarchical Few-shot Image Generation." In <em>International Conference on Computer Vision (<strong>ICCV</strong>)</em>, 2025. <a href="https://arxiv.org/pdf/2411.17784">[PDF]</a>'
