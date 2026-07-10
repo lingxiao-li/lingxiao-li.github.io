@@ -784,6 +784,11 @@ a.anchor {
             color: var(--global-theme-color);
             border-color: var(--global-theme-color);
           }
+
+          &.code,
+          &.project-page {
+            text-transform: none;
+          }
         }
       }
 
