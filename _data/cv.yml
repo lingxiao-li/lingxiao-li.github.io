@@ -35,19 +35,6 @@
       institution: Xi’an Jiao-tong Liverpool University, Suzhou, CN
       year: Sep. 2016 - Jul. 2020
 
-- title: Publications
-  type: list
-  contents:
-    - '<strong>Lingxiao Li</strong>, Max Whitton, Ledell Wu and Boqing Gong. "GenScale&#58; A Benchmark for Relative Object Scale in Image Generation and Editing." In <em>Submission</em>, 2026.'
-    - 'Yuan Qing*, Kunyu Zheng*, <strong>Lingxiao Li*</strong>, Boqing Gong, Chang Xiao. "Moiré Video Authentication&#58; A Physical Signature Against AI Video Generation." In <em>European Conference on Computer Vision (<strong>ECCV</strong>)</em>, 2026. <a href="https://arxiv.org/pdf/2604.01654">[PDF]</a>'
-    - '<strong>Lingxiao Li</strong>, Yifan Wang, Xinyan Gao, Chen Tang, Xiangyu Yue, and Chenyu You. "VisReason&#58; A Large-Scale Dataset for Visual Chain-of-Thought Reasoning." In <em>European Conference on Computer Vision (<strong>ECCV</strong>)</em>, 2026. <a href="https://arxiv.org/pdf/2511.17731">[PDF]</a>'
-    - '<strong>Lingxiao Li</strong>, Kaixuan Fan, Boqing Gong, and Xiangyu Yue. "HypDAE&#58; Hyperbolic Diffusion Autoencoders for Hierarchical Few-shot Image Generation." In <em>International Conference on Computer Vision (<strong>ICCV</strong>)</em>, 2025. <a href="https://arxiv.org/pdf/2411.17784">[PDF]</a>'
-    - '<strong>Lingxiao Li</strong>, Kaixiong Gong, Weihong Li, Xili Dai, Tao Chen, Xiaojun Yuan, and Xiangyu Yue. "BIFRÖST&#58; 3D-Aware Image Compositing with Language Instructions." In <em>Conference on Neural Information Processing Systems (<strong>NeurIPS</strong>)</em>, 2024. <a href="https://arxiv.org/pdf/2410.19079">[PDF]</a>'
-    - '<strong>Lingxiao Li</strong>, Yi Zhang, and Shuhui Wang. "The Euclidean Space is Evil&#58; Hyperbolic Attribute Editing for Few-shot Image Generation." In <em>International Conference on Computer Vision (<strong>ICCV</strong>)</em>, 2023. <a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Li_The_Euclidean_Space_is_Evil_Hyperbolic_Attribute_Editing_for_Few-shot_ICCV_2023_paper.pdf">[PDF]</a>'
-    - 'Yuanyuan Zhang, Ruiwei Guan, <strong>Lingxiao Li</strong>, Rui Yang, Yutao Yue, and Eng Gee Lim. "RadarODE&#58; An ODE-based ECG Recovery and Auto-segmentation Model from Millimeter-wave Radar." In <em>Transactions on Mobile Computing (<strong>TMC</strong>). IEEE</em>, 2025. <a href="https://arxiv.org/pdf/2408.01672">[PDF]</a>'
-    - 'Wei Hao, Zixi Wang, Lauren Hong, <strong>Lingxiao Li</strong>, Nader Karayanni, Chengzhi Mao, Junfeng Yang, and Asaf Cidon. "Nazar&#58; Monitoring and Adapting ML Models on Mobile Devices." In <em>ACM International Conference on Architectural Support for Programming Languages and Operating Systems (<strong>ASPLOS</strong>)</em>, 2025. <a href="https://arxiv.org/pdf/2305.07772">[PDF]</a>'
-    - 'Congwei Ni, Sihan Cheng, Xutao Wang, Tianyun Hu, Zhenjin Dai, Dongliang Zhang, <strong>Lingxiao Li</strong>, and Xin Huang. "Model Checking the Reliability of Data Center Network." In <em>International Conference on Information Technology in Medicine and Education (<strong>ITME</strong>). IEEE</em>, 2018. <a href="https://ieeexplore.ieee.org/abstract/document/8589429/">[PDF]</a>'
-
 - title: Professional Experience
   type: time_table
   contents:
