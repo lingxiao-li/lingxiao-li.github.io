@@ -17,7 +17,7 @@ social: true  # includes social icons at the bottom of the page
 ---
 
   
-**Research:** Lingxiao's research focuses on improving the quality and generalization of generative models. He is particularly interested in building methods that produce high-fidelity visual content while generalizing robustly across diverse data, tasks, and environments. His broader interests include **Generative Models** and **Vision-Language Models (VLMs)**.
+**Research:** Lingxiao's research focuses on improving the quality and generalization of visual generative models. His work spans the evaluation, controllable generation, and authentication/understanding of AI-generated visual content, as well as multimodal reasoning with vision-language models.
 
 **Bio:** Lingxiao Li is a PhD student in Computing & Data Sciences at Boston University, where he is advised by [Prof. Boqing Gong](https://boqinggong.github.io/). 
 
