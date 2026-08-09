@@ -716,6 +716,7 @@ a.anchor {
   text-decoration: none;
 }
 .publications ol.bibliography li .author > .author-self {
+  color: var(--global-theme-color);
   font-weight: 700;
   font-style: normal;
 }
