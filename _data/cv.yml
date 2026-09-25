@@ -13,7 +13,7 @@
 - title: Interests
   type: list
   contents:
-    - Generative Models, Vision-language Models
+    - Generative Models, Vision-language Models, Robotics
 
 - title: Education
   type: time_table
@@ -21,7 +21,7 @@
     - title: Doctor of Philosophy in Computing & Data Sciences
       institution: Boston University, Boston, US
       year: Sep. 2025 - present
-      advisor: Advisor&#58; Prof. Boqing Gong
+      advisor: Advisor&#58; Prof. Boqing Gong and Prof. Brian Kulis
 
     - title: Master of Science in Computer Science
       institution: Columbia University, New York, US
@@ -33,14 +33,14 @@
 
     - title: Bachelor of Science in Information and Computing Science
       institution: Xi’an Jiao-tong Liverpool University, Suzhou, CN
-      year: Sep. 2016 - Jul. 2020
+      year: Sep. 2016 - Jul. 2018
 
 - title: Professional Experience
   type: time_table
   contents:
     - title: Research Scientist Intern
       institution: Creatify AI, Mountain View, US
-      year: May. 2026 - Aug. 2026
+      year: May. 2026 - Sep. 2026
       advisor: Advisor&#58; Ledell Wu and Prof. Boqing Gong
       description:
         - Correcting Relative Object Scale in Image Generation
@@ -48,7 +48,7 @@
 
     - title: Research Assistant
       institution: Faculty of Computing & Data Sciences, Boston University, Boston, US
-      year: Sep. 2025 - present
+      year: Sep. 2026 - present
       advisor: Advisor&#58; Prof. Boqing Gong
       description:
         - Benchmarking and Correcting Object Size Accuracy in Generative Models
@@ -97,5 +97,5 @@
 - title: Services
   type: list
   contents:
-    - '<strong>Conference Reviewer&#58;</strong> CVPR 2025-2026, ICCV 2025, ECCV 2024-2026, ICML 2024-2025, NeurIPS 2024-2026, ICLR 2024-2026, AISTATS 2025-2026, WACV 2025-2027, AAAI 2025-2027'
+    - '<strong>Conference Reviewer&#58;</strong> CVPR 2025-2026, ICCV 2025, ECCV 2024-2026, ICML 2024-2025, NeurIPS 2024-2026, ICLR 2024-2027, AISTATS 2025-2026, WACV 2025-2027, AAAI 2025-2027'
     - '<strong>Journal Reviewer&#58;</strong> TPAMI, IJCV, Pattern Recognition'
