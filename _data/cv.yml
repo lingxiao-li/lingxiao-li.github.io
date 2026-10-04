@@ -4,7 +4,7 @@
     - name: Full Name
       value: Lingxiao Li
     - name: Address
-      value: CDS 908, 665 Commonwealth Ave, Boston, MA, 02215
+      value: CDS 848, 665 Commonwealth Ave, Boston, MA, 02215
     - name: Email
       value: lxli@bu.edu
     - name: Website
@@ -51,9 +51,9 @@
       year: Sep. 2026 - present
       advisor: Advisor&#58; Prof. Boqing Gong
       description:
-        - Benchmarking and Correcting Object Size Accuracy in Generative Models
+        - Benchmarking and Correcting Object Size Accuracy in Generative Models (NeurIPS ’26)
         - AI For Science (Fiber-optic Imaging)
-        - Physical Signatures Against AI Video Generation
+        - Physical Signatures Against AI Video Generation (ECCV ’26)
 
     - title: Research Assistant
       institution: MMLab, The Chinese University of Hong Kong, Hong Kong SAR

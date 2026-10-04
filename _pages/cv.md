@@ -4,5 +4,5 @@ permalink: /cv/
 title: cv
 nav: true
 nav_order: 4
-cv_pdf: CV_LingxiaoLi.pdf
+cv_pdf: CV_LingxiaoLi.pdf?v=20261004
 ---
