@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GenScale: A Benchmark for Relative Object Scale</title>
+    <meta name="description" content="GenScale is a benchmark and evaluation protocol for physically grounded relative object scale in image generation and editing.">
+    <meta property="og:title" content="GenScale: A Benchmark for Relative Object Scale">
+    <meta property="og:description" content="A benchmark and evaluation protocol for relative object scale in image generation and editing.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/teaser.png">
+    <link rel="stylesheet" href="assets/css/style.css?v=width7456">
+  </head>
+  <body>
+    <main>
+      <header class="publication-header">
+        <h1>GenScale: A Benchmark for Relative Object Scale in Image Generation and Editing</h1>
+
+        <p class="authors">
+          <a href="https://lingxiao-li.github.io/">Lingxiao Li</a><sup>1</sup>
+          <a href="https://www.linkedin.com/in/max-whitton-9b648a222/">Max Whitton</a><sup>1</sup>
+          <a href="https://www.linkedin.com/in/ledell-wu-b5184929/">Ledell Wu</a><sup>2</sup>
+          <a href="https://boqinggong.github.io/">Boqing Gong</a><sup>1</sup>
+        </p>
+
+        <p class="affiliations">
+          <sup>1</sup>Boston University &nbsp;&nbsp; <sup>2</sup>Creatify AI
+        </p>
+
+        <nav class="links" aria-label="Project links">
+          <a class="button" href="https://arxiv.org/abs/2609.00525" target="_blank" rel="noopener">arXiv</a>
+          <a class="button" href="https://github.com/lingxiao-li/GenScale">Code</a>
+          <a class="button" href="https://huggingface.co/datasets/lingxiao2049/GenScale">Hugging Face</a>
+          <a class="button" href="https://huggingface.co/lingxiao2049/Rescale">Rescale weights</a>
+        </nav>
+      </header>
+
+      <section class="teaser-section" aria-label="Teaser">
+        <figure>
+          <img src="assets/images/teaser.png?v=gs220" alt="GenScale teaser showing relative scale failures across generation and editing tasks.">
+          <figcaption>
+            Relative object scale remains a challenge for modern image generators. GenScale tests
+            text-only common-object generation, human-product generation with metric dimensions,
+            and scale-error correction from failed generations.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="abstract" class="section narrow">
+        <h2>Abstract</h2>
+        <p>
+          Modern image generation and editing systems can produce photorealistic, prompt-aligned images, but still often render familiar objects at implausible relative sizes.
+          To measure this failure mode, we introduce <strong>GenScale</strong>, a benchmark and evaluation protocol for real-world relative object scale in image generation and editing.
+          GenScale contains 900 image-level entries and 1,643 pairwise anchor-target scale relations across common-object generation, human-product generation with metric dimensions, and scale correction from failed generations.
+          We further design a human-calibrated ordinal judge for scalable pairwise scale evaluation.
+          Last but not the least, we introduce <strong>Rescale</strong>, a model-agnostic post-processing agent for localized scale correction without modifying the source generator.
+          Experiments reveal that state-of-the-art image generators and editors cannot reliably observe relative scale yet, while Rescale consistently improves scale plausibility across generated and edited images.
+          Together, GenScale establishes relative object scale as a distinct, measurable, and actionable capability for image generation systems.
+        </p>
+      </section>
+
+      <section id="introduction" class="section">
+        <h2>Introduction</h2>
+        <p>
+          Recent image generators have made rapid progress in visual fidelity, stylistic diversity,
+          and prompt adherence. These advances do not guarantee a basic requirement of physical
+          realism: rendering familiar objects at plausible relative scale. An image can look
+          photorealistic while still placing a banana, bicycle, person, or product at a mutually
+          implausible size. This matters for advertising, product visualization, virtual character
+          creation, and professional content production, where incorrect object proportions
+          immediately undermine visual credibility.
+        </p>
+        <p>
+          GenScale studies a more specific question than generic physical plausibility: when
+          several objects appear in a single image, can a generative model render their size
+          relationships in a way that faithfully reflects the real world? A scene may satisfy
+          coarse commonsense and layout constraints while still assigning an implausible size ratio
+          to two familiar objects.
+        </p>
+        <figure class="medium-figure">
+          <img src="assets/images/mean_regression.png?v=gs600" alt="Mean-regression errors on GenScale Task 1.">
+          <figcaption>
+            Mean-regression errors on GenScale Task 1. Large real-world target objects are often
+            rendered too small, while small target objects are often rendered too large.
+          </figcaption>
+        </figure>
+
+        <p>
+          Existing benchmarks cover related axes such as object presence, compositional prompt
+          following, commonsense plausibility, physical reasoning, and spatial relation control.
+          Scale, however, is usually folded into broader semantic or spatial reasoning rather than
+          evaluated as an object-level relation. GenScale explicitly represents scale as a
+          pairwise anchor-target relation grounded in external physical-size metadata, covering
+          implicit common-object size priors, human-product metric scale, and post-generation
+          scale correction.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Table 1: Comparison with representative related benchmarks. Prior benchmarks cover individual axes such as composition, physical plausibility, or spatial reasoning, whereas GenScale explicitly unifies object-object relative scale, human-product metric size, and post-generation scale correction.</caption>
+            <thead>
+              <tr>
+                <th rowspan="2">Work</th>
+                <th colspan="3">Broad Capabilities</th>
+                <th colspan="3">Scale-focused Evaluation</th>
+              </tr>
+              <tr>
+                <th>Compos.</th>
+                <th>Physical</th>
+                <th>Spatial</th>
+                <th>Obj.-obj. scale</th>
+                <th>Human-prod. size</th>
+                <th>Correction</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>GenEval</td><td>✓</td><td>✗</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td></tr>
+              <tr><td>T2I-CompBench++</td><td>✓</td><td>✗</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td></tr>
+              <tr><td>GenAI-Bench</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td></tr>
+              <tr><td>PhyBench</td><td>✗</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td></tr>
+              <tr><td>GenSpace</td><td>✗</td><td>✗</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td></tr>
+              <tr class="total"><td><strong>GenScale</strong></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The benchmark is paired with a human-calibrated ordinal evaluation protocol because raw
+          pixel-space ratios are not enough: scale depends jointly on object identity, physical
+          size, perspective, depth, occlusion, and placement. We also introduce Rescale, a
+          model-agnostic correction agent that uses structured scale metadata to repair localized
+          size errors without retraining the source generator.
+        </p>
+      </section>
+
+      <section id="benchmark" class="section">
+        <h2>GenScale Benchmark</h2>
+        <p>
+          GenScale evaluates physically grounded relative scale as a pairwise anchor-target
+          relation with structured metadata, including object identities, physical reference
+          lengths, expected 3D scale ratios, scenario labels, and product reference images when
+          applicable. It contains 900 image-level entries and 1,643 pairwise scale relations across
+          three tasks and five scenarios. Each anchor-target pair is the atomic evaluation unit,
+          while image-level grouping is preserved for comparing model outputs.
+        </p>
+        <p>
+          The benchmark is grounded in two types of physical-size metadata. For common objects, it
+          builds a category-level knowledge base from visually identifiable COCO/LVIS categories
+          with relatively stable physical extent. For human-product generation, it uses product
+          dimensions and reference images together with human anchors such as hand, head/face,
+          foot/leg, and full body.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <caption>Table 2: Overview of GenScale. GenScale evaluates physically grounded relative scale across implicit common-object priors (T1), explicit metric product scale (T2), and scale correction (T3). Image-level entries may contain multiple anchor-target pairs.</caption>
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Scenario</th>
+                <th>Images</th>
+                <th>Pairs</th>
+                <th>Capability tested</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>T1</td><td>S1: Natural Depth</td><td>200</td><td>570</td><td>Implicit scale priors under perspective</td></tr>
+              <tr><td>T1</td><td>S2: Same Plane</td><td>200</td><td>573</td><td>Implicit scale priors with depth controlled</td></tr>
+              <tr><td>T2</td><td>S3: Human-Product</td><td>300</td><td>300</td><td>Metric product scale with human anchors</td></tr>
+              <tr><td>T3</td><td>S4: Auto-Discovery</td><td>100</td><td>100</td><td>Diagnose scale error and choose resize</td></tr>
+              <tr><td>T3</td><td>S5: Precise Instruction</td><td>100</td><td>100</td><td>Execute exact numeric resize factor</td></tr>
+              <tr class="total"><td colspan="2">Total</td><td>900</td><td>1,643</td><td>Generation, customization, and correction</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Benchmark Construction</h3>
+        <p>
+          Task 1 is text-only image generation: each prompt contains two to four non-human common
+          objects, with no numeric dimensions or reference images. S1 allows natural perspective
+          and depth ordering; S2 constrains objects to approximately the same depth plane, reducing
+          perspective ambiguity. Task 2 is reference-conditioned human-product generation: the
+          model sees a product image and metric dimensions and must render plausible scale relative
+          to a human body anchor. Task 3 converts failed generations from Tasks 1 and 2 into
+          scale-aware image editing tasks.
+        </p>
+        <figure>
+          <img src="assets/images/benchmark_pipeline.png?v=gs220" alt="GenScale benchmark construction pipeline.">
+          <figcaption>
+            GenScale is built from physical-size metadata and product references, then instantiated
+            as common-object generation, human-product metric scale, and scale correction.
+          </figcaption>
+        </figure>
+
+        <h3>Human-Calibrated Scale Evaluation</h3>
+        <p>
+          GenScale evaluates relative scale at the object-pair level. A calibrated ordinal judge
+          assigns scores from 1 to 5, where 3 indicates physically plausible scale, lower scores
+          indicate that the target is undersized, and higher scores indicate that the target is
+          oversized. Score 3 corresponds to an estimated scale error within roughly ±20%, scores
+          2/4 to moderate errors, and scores 1/5 to severe errors. Pairs are marked invalid only
+          when reliable scale judgment is impossible because objects are missing, merged,
+          ambiguous, or too degraded to identify.
+        </p>
+        <p>
+          Human annotation is used to calibrate the automatic judge. Nine raters annotate a
+          calibration split from Tasks 1 and 2; consensus is defined by the modal score, with ties
+          broken by the median. The calibrated Gemini judge receives the same core evidence as
+          humans: the image, anchor/target names, physical reference lengths, expected 3D ratio,
+          and the ordinal rubric.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <caption>Table 3: Human reliability and Gemini-human alignment. Exact and ≤1 denote exact agreement and agreement within one ordinal level. MAE is mean absolute ordinal deviation, r is Pearson correlation, and QWK is quadratic-weighted kappa.</caption>
+            <thead>
+              <tr>
+                <th>Evaluator / Reference</th>
+                <th>Split</th>
+                <th>Exact ↑</th>
+                <th>≤ 1 ↑</th>
+                <th>MAE ↓</th>
+                <th>r ↑</th>
+                <th>QWK ↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Human vs. Aggregate Consensus</td><td>T1+T2</td><td>65.1±7.0</td><td>94.0±3.2</td><td>0.413±0.099</td><td>0.764±0.076</td><td>0.754±0.077</td></tr>
+              <tr><td>Human vs. LOO Consensus</td><td>T1+T2</td><td>58.0±6.6</td><td>93.3±3.0</td><td>0.491±0.093</td><td>0.719±0.069</td><td>0.706±0.070</td></tr>
+              <tr><td>Gemini vs. Human Consensus</td><td>T1+T2</td><td>63.95</td><td>97.15</td><td>0.389</td><td>0.833</td><td>0.823</td></tr>
+              <tr><td>Gemini vs. Human Consensus</td><td>T1</td><td>61.83</td><td>96.49</td><td>0.417</td><td>0.847</td><td>0.837</td></tr>
+              <tr><td>Gemini vs. Human Consensus</td><td>T2</td><td>73.00</td><td>100.00</td><td>0.270</td><td>0.470</td><td>0.468</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <figure class="medium-figure">
+          <img src="assets/images/gemini_human_alignment.png?v=gs400" alt="Gemini-human ordinal alignment heatmap.">
+          <figcaption>
+            Disagreements between the calibrated Gemini judge and human consensus concentrate near
+            the diagonal of the five-point ordinal scale.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="method" class="section">
+        <h2>Rescale: Agentic Relative-Scale Correction</h2>
+        <p>
+          The GenScale formulation makes relative-scale errors actionable beyond evaluation.
+          Rescale is a model-agnostic post-processing pipeline that repairs scale inconsistencies
+          without modifying the source generator. Given an image, object identities, and physical
+          size references, it diagnoses a scale anomaly, predicts a resize factor and contact
+          preserving anchor point, and executes localized correction while preserving identity,
+          layout, lighting, and background.
+        </p>
+        <p>
+          At inference time, a multimodal agent grounds the relevant objects and converts pairwise
+          scale evidence into an edit plan. For common-object scenes, it aggregates inconsistent
+          relations into a conservative object-level plan and edits over multiple rounds. For
+          human-product scenes, the product is the editable target while the human body part is
+          fixed. If the agent detects no reliable inconsistency or the edit is unsafe, Rescale
+          returns no edit.
+        </p>
+        <p>
+          The planned edit is executed by a modular local insertion pipeline: segment the target,
+          extract it as an identity reference, remove the original instance, complete the
+          background, construct a resized edit mask, estimate depth when useful, and insert the
+          corrected object back into the scene. After each edit, the agent verifies whether another
+          correction round is needed.
+        </p>
+        <figure>
+          <img src="assets/images/inference_pipeline.png?v=gs220" alt="Rescale agentic multi-round inference and editing pipeline.">
+          <figcaption>
+            Agentic multi-round inference in Rescale: diagnose the scale error, plan a localized
+            resize, execute modular insertion, and verify whether another correction round is
+            needed.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="results" class="section">
+        <h2>Evaluation Results</h2>
+        <p>
+          GenScale exposes relative scale as a distinct unsolved capability. The main results below
+          follow the paper order: state-of-the-art model benchmarking on GenScale, followed by
+          Rescale correction and visual-quality preservation. All scale metrics are computed on
+          valid pair-level judgments after filtering out missing or unscorable objects. For ordinal
+          score s in {1,...,5}, with 3 denoting plausible scale, <em>scale error</em> is mean
+          |s−3|; <em>plausible</em> is the percentage of relations scored 3; and <em>severe</em>
+          denotes scores 1 or 5.
+        </p>
+
+        <h3>Benchmarking State-of-the-Art Models</h3>
+        <p>
+          Task 1 tests implicit common-object relative scale. Models receive only text prompts, so
+          success requires using object-size priors and scene geometry rather than explicit
+          dimensions. The dominant failure is mean regression: small real-world objects are often
+          enlarged, while large real-world objects are often shrunk toward a typical visual size.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <caption>Table 4: Task 1: Common-object relative scale. Results are reported for S1, S2, and both. Err. is mean |s−3|; Plaus. is the percentage of plausible relations; MR is the rate of mean-regression errors, where small targets are judged too large or large targets too small.</caption>
+            <thead>
+              <tr>
+                <th rowspan="2">Model</th>
+                <th colspan="3">S1</th>
+                <th colspan="3">S2</th>
+                <th colspan="3">S1 + S2</th>
+              </tr>
+              <tr>
+                <th>Err. ↓</th><th>Plaus. ↑</th><th>MR ↓</th>
+                <th>Err. ↓</th><th>Plaus. ↑</th><th>MR ↓</th>
+                <th>Err. ↓</th><th>Plaus. ↑</th><th>MR ↓</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Nano Banana 2</td><td>0.51</td><td>65.1</td><td>15.8</td><td>0.69</td><td>47.8</td><td>48.1</td><td><strong>0.60</strong></td><td><strong>56.5</strong></td><td>31.8</td></tr>
+              <tr><td>GPT-Image-2</td><td>0.78</td><td>51.1</td><td>12.2</td><td>0.63</td><td>52.8</td><td>36.0</td><td>0.71</td><td>51.9</td><td><strong>24.1</strong></td></tr>
+              <tr><td>Z-Image-Turbo</td><td>0.64</td><td>53.2</td><td>36.2</td><td>0.88</td><td>38.1</td><td>55.9</td><td>0.75</td><td>46.1</td><td>45.3</td></tr>
+              <tr><td>Grok Image</td><td>0.60</td><td>58.8</td><td>27.0</td><td>0.98</td><td>34.7</td><td>61.2</td><td>0.79</td><td>46.7</td><td>44.2</td></tr>
+              <tr><td>Qwen-Image 2512</td><td>0.70</td><td>53.3</td><td>37.7</td><td>1.10</td><td>27.2</td><td>67.6</td><td>0.90</td><td>40.0</td><td>52.9</td></tr>
+              <tr><td>FLUX.2</td><td>0.84</td><td>44.9</td><td>40.1</td><td>1.20</td><td>23.4</td><td>69.5</td><td>1.03</td><td>33.9</td><td>55.1</td></tr>
+              <tr><td>SD3.5-Large</td><td>0.96</td><td>36.6</td><td>47.0</td><td>1.18</td><td>24.9</td><td>70.0</td><td>1.07</td><td>31.1</td><td>57.8</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <figure>
+          <img src="assets/images/size_depth_relation.png?v=gs220" alt="Depth-mediated scale compression analysis in Task 1.">
+          <figcaption>
+            Depth-mediated scale compression in Task 1 S1: generators often place smaller objects
+            closer and larger objects farther away.
+          </figcaption>
+        </figure>
+
+        <p>
+          The gap between S1 and S2 suggests that natural depth can hide scale errors: models
+          appear better in S1 because perspective and depth ordering can absorb unrealistic
+          physical ratios, while S2 exposes object-size mistakes more directly on the same image
+          plane. The depth analysis above supports this interpretation.
+        </p>
+        <p>
+          Task 2 tests explicit metric scale in human-product interaction. Each prompt gives a
+          product reference image, product dimensions, and a human anchor. This is easier than
+          text-only common-object scale, but still not solved: reference-conditioned outputs may
+          preserve product identity while misrepresenting physical size.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <caption>Table 5: Task 2: Human-anchored product scale. Each prompt contains one product-human relation. Scale error is mean |s−3|; Plausible denotes score 3; Severe denotes scores 1 or 5.</caption>
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Valid img. / pairs</th>
+                <th>Scale error ↓</th>
+                <th>Plausible (%) ↑</th>
+                <th>Severe (%) ↓</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>GPT-Image-2</td><td>294 / 294</td><td><strong>0.231</strong></td><td><strong>78.9</strong></td><td><strong>2.0</strong></td></tr>
+              <tr><td>Nano Banana 2</td><td>295 / 295</td><td>0.268</td><td>75.6</td><td>2.4</td></tr>
+              <tr><td>Seedream v4.5</td><td>295 / 295</td><td>0.302</td><td>74.9</td><td>5.1</td></tr>
+              <tr><td>Qwen-Image-Edit-2511</td><td>297 / 297</td><td>0.327</td><td>71.0</td><td>3.7</td></tr>
+              <tr><td>FLUX.1 Kontext-dev</td><td>291 / 291</td><td>0.423</td><td>63.2</td><td>5.5</td></tr>
+              <tr><td>SD3.5-Large + IP-Adapter</td><td>270 / 270</td><td>0.600</td><td>52.6</td><td>12.6</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Task 3 evaluates scale-error correction from failed generations. S4 requires automatic
+          error discovery: the editor sees the erroneous image and scale references but must decide
+          what to change. S5 gives the editable object, fixed reference, resize direction, and
+          exact factor, isolating fine-grained numeric resize following from diagnosis.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <caption>Table 6: Task 3: Scale-error correction. S4 tests autonomous diagnosis and correction; S5 provides the target object, reference object, direction, and scale factor. Gain is the matched-pair reduction in scale error. B / W counts better / worse scale scores after editing.</caption>
+            <thead>
+              <tr>
+                <th rowspan="2">Model</th>
+                <th colspan="3">S4</th>
+                <th colspan="3">S5</th>
+                <th colspan="5">S4 + S5</th>
+              </tr>
+              <tr>
+                <th>Err. ↓</th><th>Plaus. ↑</th><th>Gain ↑</th>
+                <th>Err. ↓</th><th>Plaus. ↑</th><th>Gain ↑</th>
+                <th>Valid</th><th>Err. ↓</th><th>Plaus. ↑</th><th>Gain ↑</th><th>B / W</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Before edit</td><td>1.27</td><td>20.4</td><td>--</td><td>1.27</td><td>20.4</td><td>--</td><td>200 / 200</td><td>1.27</td><td>20.4</td><td>--</td><td>--</td></tr>
+              <tr><td>GPT-Image-2</td><td>0.96</td><td>40.2</td><td>+0.33</td><td>0.41</td><td>66.3</td><td>+0.87</td><td>195 / 195</td><td><strong>0.68</strong></td><td><strong>53.3</strong></td><td><strong>+0.60</strong></td><td>91 / 9</td></tr>
+              <tr><td>Nano Banana 2</td><td>1.03</td><td>31.3</td><td>+0.24</td><td>0.93</td><td>33.7</td><td>+0.34</td><td>197 / 197</td><td>0.98</td><td>32.5</td><td>+0.29</td><td>55 / 11</td></tr>
+              <tr><td>FLUX.1 Kontext-dev</td><td>1.29</td><td>21.2</td><td>-0.02</td><td>0.96</td><td>36.2</td><td>+0.28</td><td>193 / 193</td><td>1.13</td><td>28.5</td><td>+0.13</td><td>35 / 16</td></tr>
+              <tr><td>Qwen-Image-Edit-2511</td><td>1.25</td><td>23.2</td><td>+0.02</td><td>1.00</td><td>34.1</td><td>+0.25</td><td>190 / 190</td><td>1.13</td><td>28.4</td><td>+0.13</td><td>32 / 9</td></tr>
+              <tr><td>Seedream v4.5</td><td>1.17</td><td>28.0</td><td>+0.10</td><td>1.10</td><td>35.4</td><td>+0.20</td><td>196 / 196</td><td>1.14</td><td>31.6</td><td>+0.15</td><td>43 / 17</td></tr>
+              <tr><td>SD3.5-Large + IP-Adapter</td><td>0.93</td><td>40.0</td><td>-0.20</td><td>1.31</td><td>22.0</td><td>-0.16</td><td>74 / 74</td><td>1.23</td><td>25.7</td><td>-0.17</td><td>10 / 19</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Rescale Correction Results</h3>
+        <p>
+          Rescale is evaluated on matched image pairs before and after correction using the fixed
+          calibrated GenScale judge. The results show that relative-scale mistakes are often
+          locally correctable, and that structured scale diagnosis plus local insertion can improve
+          scale plausibility more consistently than generic editing alone.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <caption>Table 7: Task 1 correction on common-object generations. Metrics are computed on matched scorable pairs before and after Rescale correction. Short model names are used for compactness.</caption>
+            <thead>
+              <tr>
+                <th>Metric</th><th>Gemini</th><th>GPT</th><th>Z-Image</th><th>Grok</th><th>Qwen</th><th>FLUX</th><th>SD3.5</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Error before ↓</td><td><strong>0.592</strong></td><td>0.692</td><td>0.759</td><td>0.785</td><td>0.916</td><td>1.025</td><td>1.041</td></tr>
+              <tr><td>Error after ↓</td><td><strong>0.383</strong></td><td>0.445</td><td>0.431</td><td>0.450</td><td>0.423</td><td>0.529</td><td>0.635</td></tr>
+              <tr><td>Gain by Rescale ↑</td><td>+0.208</td><td>+0.246</td><td>+0.328</td><td>+0.335</td><td>+0.493</td><td><strong>+0.495</strong></td><td>+0.406</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Table 8: Correction results on image-conditioned generation/editing tasks. Task 2 reports Rescale correction on human-product generations from each source model; Task 3 compares Rescale with general-purpose editors on the correction benchmark.</caption>
+            <thead>
+              <tr>
+                <th>Task</th><th>Metric</th><th>Gemini</th><th>GPT</th><th>Seedream</th><th>Qwen</th><th>FLUX</th><th>SD3.5</th><th>Rescale</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Task 2</td><td>Error before ↓</td><td>0.261</td><td><strong>0.231</strong></td><td>0.295</td><td>0.306</td><td>0.406</td><td>0.565</td><td>--</td></tr>
+              <tr><td>Task 2</td><td>Error after ↓</td><td><strong>0.086</strong></td><td>0.090</td><td>0.168</td><td>0.144</td><td>0.228</td><td>0.256</td><td>--</td></tr>
+              <tr><td>Task 2</td><td>Gain by Rescale ↑</td><td>+0.175</td><td>+0.141</td><td>+0.126</td><td>+0.162</td><td>+0.178</td><td><strong>+0.309</strong></td><td>--</td></tr>
+              <tr><td>Task 3</td><td>Error before ↓</td><td>1.263</td><td>1.275</td><td>1.280</td><td>1.259</td><td>1.247</td><td><strong>1.042</strong></td><td>1.258</td></tr>
+              <tr><td>Task 3</td><td>Error after ↓</td><td>0.974</td><td>0.674</td><td>1.130</td><td>1.127</td><td>1.121</td><td>1.208</td><td><strong>0.548</strong></td></tr>
+              <tr><td>Task 3</td><td>Gain ↑</td><td>+0.289</td><td>+0.601</td><td>+0.150</td><td>+0.132</td><td>+0.126</td><td>-0.167</td><td><strong>+0.710</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Table 9: Identity preservation and visual quality after correction. Higher values indicate better preservation or quality; percentages denote relative change after correction.</caption>
+            <thead>
+              <tr>
+                <th>Setting</th><th>CLIP-I ↑</th><th>DINO ↑</th><th>SSIM ↑</th><th>SSIM-HF ↑</th><th>LAION-Aes before / after ↑</th><th>Q-Align-IQ before / after ↑</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Task 1</td><td>94.8</td><td>90.2</td><td>88.8</td><td>92.4</td><td>5.83 / 5.73 (-1.7%)</td><td>4.74 / 4.67 (-1.5%)</td></tr>
+              <tr><td>Task 2</td><td>92.4</td><td>84.5</td><td>73.5</td><td>82.1</td><td>4.99 / 4.96 (-0.8%)</td><td>4.88 / 4.88 (0.0%)</td></tr>
+              <tr><td>Task 3</td><td>95.6</td><td>88.9</td><td>89.3</td><td>92.9</td><td>5.83 / 5.73 (-1.2%)</td><td>4.76 / 4.67 (-1.9%)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The quality metrics indicate that scale correction does not simply trade geometric
+          plausibility for degraded images. CLIP-I, DINO, SSIM, and SSIM-HF remain high despite the
+          intended object-size changes, while no-reference aesthetics and image-quality scores
+          change only slightly.
+        </p>
+      </section>
+
+      <section id="demos" class="section">
+        <h2>Additional Qualitative Examples</h2>
+        <p>
+          The following appendix-style visualizations provide larger sets of task examples and
+          corrections. They are placed after the main paper narrative and results.
+        </p>
+
+        <figure>
+          <img src="assets/images/task1_s1_common_objects.jpg" alt="Task 1 S1 natural-depth common-object examples.">
+          <figcaption>Task 1, S1: natural-depth common-object generation.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="assets/images/task1_s2_common_objects.jpg" alt="Task 1 S2 same-plane common-object examples.">
+          <figcaption>Task 1, S2: same-plane common-object generation.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="assets/images/task2_human_product.jpg" alt="Task 2 human-product scale examples.">
+          <figcaption>Task 2, S3: human-product generation with metric product dimensions.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="assets/images/task3_editor_correction.jpg" alt="Task 3 scale-error correction examples.">
+          <figcaption>Task 3, S4-S5: scale-error correction from failed generations.</figcaption>
+        </figure>
+      </section>
+
+      <section id="citation" class="section narrow">
+        <div class="bib-header">
+          <h2>BibTeX</h2>
+          <button class="copy-button" type="button" data-copy-target="bibtex">Copy</button>
+        </div>
+        <pre id="bibtex"><code>@article{li2026genscale,
+  title = {GenScale: A Benchmark for Relative Object Scale in Image Generation and Editing},
+  author = {Li, Lingxiao and Whitton, Max and Wu, Ledell and Gong, Boqing},
+  journal = {arXiv preprint arXiv:2609.00525},
+  eprint = {2609.00525},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.CV},
+  url = {https://arxiv.org/abs/2609.00525},
+  year = {2026}
+}</code></pre>
+      </section>
+    </main>
+
+    <footer>
+      <p><a href="https://github.com/lingxiao-li/GenScale">Code (MIT)</a> · <a href="https://huggingface.co/datasets/lingxiao2049/GenScale">Dataset (CC BY 4.0)</a> · <a href="https://huggingface.co/lingxiao2049/Rescale">Rescale weights (FLUX non-commercial license)</a> · <a href="https://huggingface.co/datasets/lingxiao2049/GenScale/blob/main/croissant.json">Croissant + RAI</a></p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
