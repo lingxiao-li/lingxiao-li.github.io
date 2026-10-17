@@ -20,6 +20,12 @@ jobs:
     steps:
     - name: Checkout 🛎️
       uses: actions/checkout@v3
+    - name: Checkout GenScale project page
+      uses: actions/checkout@v3
+      with:
+        repository: lingxiao-li/genscale.github.io
+        path: _genscale_project
+        persist-credentials: false
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
@@ -29,6 +35,10 @@ jobs:
       run: |
         npm install -g mermaid.cli
         bundle exec jekyll build
+    - name: Add GenScale project page
+      run: |
+        mkdir -p _site/genscale
+        rsync -a --exclude='.git' _genscale_project/ _site/genscale/
     - name: Deploy 🚀
       if: github.event_name != 'pull_request'
       uses: JamesIves/github-pages-deploy-action@v4
