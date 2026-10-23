@@ -17,7 +17,7 @@ social: true  # includes social icons at the bottom of the page
 ---
 
   
-**Research:** Lingxiao's research focuses on **generative modeling**, including its foundations and applications to visual generation and editing. He also works on **visual reasoning with vision-language models** and has a growing interest in **robotics**.
+**Research:** Lingxiao's research interests lie in **machine learning and computer vision**, with a particular focus on **generative modeling** and **visual reasoning with vision-language models**. He also has a growing interest in **robotics**.
 
 **Bio:** Lingxiao Li is a PhD student in Computing & Data Sciences at Boston University, where he is co-advised by [Prof. Boqing Gong](https://boqinggong.github.io/) and [Prof. Brian Kulis](https://people.bu.edu/bkulis/).
 
