@@ -228,6 +228,9 @@
       {% if entry.project_page %}
         <a href="{{ entry.project_page }}" class="project-page btn btn-sm z-depth-0" role="button">Project Page</a>
       {% endif %}
+      {% if entry.huggingface %}
+        <a href="{{ entry.huggingface }}" class="btn btn-sm z-depth-0" role="button">Hugging Face</a>
+      {% endif %}
       {% if entry.supp %}
         {% if entry.supp contains '://' %}
           <a href="{{ entry.supp }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
