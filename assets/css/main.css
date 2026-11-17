@@ -741,7 +741,7 @@ a.anchor {
   color: var(--global-theme-color);
   border-color: var(--global-theme-color);
 }
-.publications ol.bibliography li .links a.btn.code, .publications ol.bibliography li .links a.btn.project-page {
+.publications ol.bibliography li .links a.btn.code, .publications ol.bibliography li .links a.btn.huggingface, .publications ol.bibliography li .links a.btn.project-page {
   text-transform: none;
 }
 .publications ol.bibliography li .badges {
