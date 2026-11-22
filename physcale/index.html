@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f9f8f4">
+  <title>PhyScale — Physically Grounded Object Size Correction in Text-to-Image Generation</title>
+  <meta name="description" content="Explore how PhyScale corrects the relative sizes of objects in generated images using scene geometry. Compare the original and corrected scenes.">
+  <meta property="og:title" content="PhyScale — Physically Grounded Object Size Correction">
+  <meta property="og:description" content="A pizza beside a bear, a cork beside a cat. Explore six generated scenes before and after geometric size correction.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://lingxiao-li.github.io/physcale/assets/preview.jpg">
+  <meta property="og:image:alt" content="A bear with an oversized pizza, followed by the same bear with a smaller pizza after PhyScale correction.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body id="top">
+<a class="skip" href="#examples">Skip to examples</a>
+<header class="wrap masthead">
+  <a class="brand" href="#top"><i class="mark" aria-hidden="true"></i>PhyScale</a>
+  <nav aria-label="Page sections"><a href="#examples">Examples</a><a href="#method">Method</a><a href="#results">Results</a><a href="#citation">Cite</a></nav>
+</header>
+<main>
+  <section class="wrap hero" aria-labelledby="title">
+    <div class="headline">
+      <h1 id="title"><span class="wordmark">Phy<em>Scale</em></span><span class="subtitle">Physically Grounded Object Size Correction in <span class="nobr">Text-to-Image</span> Generation</span></h1>
+      <div class="authors"><a href="https://lingxiao-li.github.io/">Lingxiao Li</a><sup>1</sup><span></span><a href="https://www.linkedin.com/in/ledell-wu-b5184929/">Ledell Wu</a><sup>2</sup><span></span><a href="https://boqinggong.github.io/">Boqing Gong</a><sup>1</sup></div>
+      <p class="affiliations"><sup>1</sup> Boston University &nbsp; <sup>2</sup> Creatify AI</p>
+      <a class="read-method" href="#method">How it works <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="viewer" id="examples">
+      <div class="viewer-bar"><h2>Scale corrections</h2><div class="modes js-only" role="group" aria-label="Comparison view"><button type="button" aria-pressed="true" data-mode="pair">Pair</button><button type="button" aria-pressed="false" data-mode="wipe">Wipe</button></div></div>
+      <figure class="comparison" id="comparison">
+        <div class="frames" id="frames">
+          <div class="frame original"><img id="original" src="assets/bear-input.webp" width="640" height="640" fetchpriority="high" alt="A bear stands behind a pizza almost as wide as its body."><span class="tag">Original</span></div>
+          <div class="frame corrected"><img id="corrected" src="assets/bear-corrected.webp" width="640" height="640" fetchpriority="high" alt="The same bear stands behind a much smaller pizza."><span class="tag highlight">PhyScale</span></div>
+          <span class="wipe-line" aria-hidden="true"><b>‹ ›</b></span>
+          <input id="wipe" class="wipe-range" type="range" min="0" max="100" value="50" aria-label="Reveal original image" aria-valuetext="50 percent original" hidden>
+        </div>
+        <figcaption class="scene-caption" aria-live="polite"><span id="scene-caption">The pizza shrinks beside the bear.</span><small id="generator">Qwen-Image</small></figcaption>
+      </figure>
+      <div id="scene-picker" class="scene-picker js-only" role="group" aria-label="Choose a scale correction"></div>
+    </div>
+  </section>
+  <div class="wrap"><div class="scale-rule" aria-hidden="true"></div></div>
+  <section class="wrap method section" id="method" aria-labelledby="method-heading">
+    <div class="section-intro"><h2 id="method-heading">How it <em>works</em></h2>
+      <p>A small object near the camera can occupy as many pixels as a large object farther away. PhyScale uses pose, depth and familiar object dimensions to decide what to resize and where it will fit.</p></div>
+    <div class="steps">
+      <article><div class="step-img"><img src="assets/observe.webp" loading="lazy" width="537" height="269" alt="Colored cuboids fit the orange, rabbit, laptop and 8-ball in the input image."></div><h3>Measure the scene</h3><p>The observer fits each object’s expected 3D dimensions to its visible outline. Here the rabbit is too small relative to the laptop.</p></article>
+      <article><div class="step-img"><img src="assets/plan.webp" loading="lazy" width="470" height="326" alt="Dashed outlines on the tabletop mark planned sizes for the rabbit, orange and 8-ball."></div><h3>Plan the correction</h3><p>The planner keeps the laptop fixed, enlarges the rabbit by 1.60× and shrinks the orange and 8-ball. It checks that each object fits and stays supported.</p></article>
+      <article><div class="step-img"><img src="assets/rabbit-corrected.webp" loading="lazy" width="640" height="640" alt="The corrected tabletop scene with a larger rabbit and smaller orange and 8-ball."></div><h3>Render the edit</h3><p>The editor shifts and scales object-token coordinates to follow the plan. Training on 2,468 paired 3D renders teaches it how contact, shadows and visibility change with the edit.</p></article>
+    </div>
+    <details class="abstract"><summary>Read the abstract</summary><p>Generated images can appear photorealistic while depicting objects at implausible relative physical sizes. Correcting these errors requires distinguishing physical size from its depth- and pose-dependent appearance. We introduce PhyScale, a framework that formulates size correction as geometric inference and planning, separating physical-size changes from their image-space realization. Using typical real-world object dimensions from a knowledge base and estimated scene geometry, it computes size, depth, and placement commands for an image editor controlled through spatial rotary positional embeddings. To learn the associated appearance changes, we adapt the editor on only 2,468 paired renders from controlled 3D object transformations. The resulting editor outperforms prior geometry-aware editors in target fidelity and identity preservation on real-image edits. Combined with our geometric inference and planning front end, it matches a state-of-the-art VLM-based correction pipeline on GenScale at one-twentieth of the inference cost, and human raters prefer its corrections.</p></details>
+  </section>
+  <section class="results section" id="results" aria-labelledby="results-heading"><div class="wrap">
+    <div class="section-intro"><h2 id="results-heading">Results on <em>GenScale</em></h2><p>Across seven image generators, PhyScale matches ReScale’s average size error at about one-twentieth of its estimated inference cost.</p></div>
+    <div id="baseline-picker" role="group" aria-label="Choose a baseline comparison" class="baseline-picker js-only"></div>
+    <div class="triptych" aria-live="polite">
+      <figure><img id="baseline-input" src="assets/zebra-input.webp" width="640" height="640" loading="lazy" alt="Input with an oversized pizza in front of a zebra."><figcaption>Original</figcaption></figure>
+      <figure><img id="baseline-rescale" src="assets/zebra-rescale.webp" width="640" height="640" loading="lazy" alt="ReScale output for the zebra and pizza."><figcaption>ReScale</figcaption></figure>
+      <figure><img id="baseline-physcale" src="assets/zebra-physcale.webp" width="640" height="640" loading="lazy" alt="PhyScale output for the zebra and pizza."><figcaption>PhyScale</figcaption></figure>
+    </div>
+    <p class="baseline-note" id="baseline-note" aria-live="polite">Both methods see the same input. PhyScale makes the pizza smaller relative to the zebra.</p>
+    <div class="measurement">
+      <div><h3>Accuracy and inference cost</h3><p>Size error averages 8,001 object relations across 2,800 images. Cost and time are per-image means on 30 shared inputs. Lower is better for all three metrics.</p><a href="https://lingxiao-li.github.io/genscale/">GenScale benchmark ↗</a></div>
+      <table><thead><tr><th scope="col">Method</th><th scope="col">Size error</th><th scope="col">Est. cost</th><th scope="col">Time</th></tr></thead><tbody><tr><th scope="row">Original</th><td>0.910</td><td>—</td><td>—</td></tr><tr><th scope="row">ReScale</th><td>0.649</td><td>$0.696</td><td>98.0 s</td></tr><tr class="ours"><th scope="row">PhyScale</th><td>0.640</td><td>$0.037</td><td>52.8 s</td></tr></tbody></table>
+    </div>
+    <p class="preference">Five blinded raters compared 105 pairs on which the methods differed. For naturalness, 323 votes favored PhyScale, 44 favored ReScale and 158 rated them the same.</p>
+  </div></section>
+  <section class="wrap citation section" id="citation" aria-labelledby="cite-heading">
+    <div><h2 id="cite-heading">Citation</h2></div>
+    <div class="bib"><button id="copy" class="js-only" type="button">Copy BibTeX</button><pre><code id="bibtex">@misc{li2026physcale,
+  title  = {{PhyScale}: Physically Grounded Object Size Correction in Text-to-Image Generation},
+  author = {Lingxiao Li and Ledell Wu and Boqing Gong},
+  year   = {2026}
+}</code></pre><span id="copy-status" class="sr" role="status"></span></div>
+  </section>
+</main><footer class="wrap"><span>PhyScale</span><a href="#top">Back to top ↑</a></footer>
+</body></html>
