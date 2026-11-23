@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f9f8f4">
+  <meta name="theme-color" content="#ffffff">
   <title>PhyScale — Physically Grounded Object Size Correction in Text-to-Image Generation</title>
   <meta name="description" content="Explore how PhyScale corrects the relative sizes of objects in generated images using scene geometry. Compare the original and corrected scenes.">
   <meta property="og:title" content="PhyScale — Physically Grounded Object Size Correction">
@@ -13,25 +13,31 @@
   <meta property="og:image:alt" content="A bear with an oversized pizza, followed by the same bear with a smaller pizza after PhyScale correction.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/favicon.png" type="image/png">
-  <link rel="stylesheet" href="style.css">
-  <script defer src="app.js"></script>
+  <link rel="stylesheet" href="style.css?v=2">
+  <script defer src="app.js?v=2"></script>
 </head>
 <body id="top">
-<a class="skip" href="#examples">Skip to examples</a>
-<header class="wrap masthead">
-  <a class="brand" href="#top"><i class="mark" aria-hidden="true"></i>PhyScale</a>
-  <nav aria-label="Page sections"><a href="#examples">Examples</a><a href="#method">Method</a><a href="#results">Results</a><a href="#citation">Cite</a></nav>
-</header>
-<main>
-  <section class="wrap hero" aria-labelledby="title">
-    <div class="headline">
-      <h1 id="title"><span class="wordmark">Phy<em>Scale</em></span><span class="subtitle">Physically Grounded Object Size Correction in <span class="nobr">Text-to-Image</span> Generation</span></h1>
-      <div class="authors"><a href="https://lingxiao-li.github.io/">Lingxiao Li</a><sup>1</sup><span></span><a href="https://www.linkedin.com/in/ledell-wu-b5184929/">Ledell Wu</a><sup>2</sup><span></span><a href="https://boqinggong.github.io/">Boqing Gong</a><sup>1</sup></div>
-      <p class="affiliations"><sup>1</sup> Boston University &nbsp; <sup>2</sup> Creatify AI</p>
-      <a class="read-method" href="#method">How it works <span aria-hidden="true">↓</span></a>
+<a class="skip" href="#overview">Skip to overview</a>
+<header class="topbar"><div class="wrap bar-inner">
+  <a class="brand" href="#top">PhyScale</a>
+  <nav aria-label="Sections"><a href="#overview">Overview</a><a href="#method">Method</a><a href="#results">Results</a><a href="#citation">BibTeX</a></nav>
+</div></header>
+<main class="wrap">
+  <header class="paper-title">
+    <h1>PhyScale: Physically Grounded Object Size Correction in <span class="nowrap">Text-to-Image</span> Generation</h1>
+    <p class="authors"><span><a href="https://lingxiao-li.github.io/">Lingxiao Li</a><sup>1</sup></span> <span><a href="https://www.linkedin.com/in/ledell-wu-b5184929/">Ledell Wu</a><sup>2</sup></span> <span><a href="https://boqinggong.github.io/">Boqing Gong</a><sup>1</sup></span></p>
+    <p class="affiliations"><span><sup>1</sup> Boston University</span> <span><sup>2</sup> Creatify AI</span></p>
+    <div class="resources" role="group" aria-label="Paper and project resources">
+      <a class="resource" role="link" aria-disabled="true">arXiv <small>TBD</small></a>
+<a class="resource" role="link" aria-disabled="true">GitHub <small>TBD</small></a>
+<a class="resource" role="link" aria-disabled="true">Hugging Face <small>TBD</small></a>
+<a class="resource" role="link" aria-disabled="true">Supplementary material <small>TBD</small></a>
     </div>
+  </header>
+
+  <section class="overview" id="overview" aria-label="Overview">
     <div class="viewer" id="examples">
-      <div class="viewer-bar"><h2>Scale corrections</h2><div class="modes js-only" role="group" aria-label="Comparison view"><button type="button" aria-pressed="true" data-mode="pair">Pair</button><button type="button" aria-pressed="false" data-mode="wipe">Wipe</button></div></div>
+      <div class="viewer-bar"><h2>Size correction examples</h2><div class="modes js-only" role="group" aria-label="Comparison view"><button type="button" aria-pressed="false" data-mode="wipe">Slider</button><button type="button" aria-pressed="true" data-mode="pair">Side by side</button></div></div>
       <figure class="comparison" id="comparison">
         <div class="frames" id="frames">
           <div class="frame original"><img id="original" src="assets/bear-input.webp" width="640" height="640" fetchpriority="high" alt="A bear stands behind a pizza almost as wide as its body."><span class="tag">Original</span></div>
@@ -42,41 +48,149 @@
         <figcaption class="scene-caption" aria-live="polite"><span id="scene-caption">The pizza shrinks beside the bear.</span><small id="generator">Qwen-Image</small></figcaption>
       </figure>
       <div id="scene-picker" class="scene-picker js-only" role="group" aria-label="Choose a scale correction"></div>
+
     </div>
+    <div class="abstract"><h2>Abstract</h2><p>Generated images can appear photorealistic while depicting objects at implausible relative physical sizes. Correcting these errors requires distinguishing physical size from its depth- and pose-dependent appearance. We introduce PhyScale, a framework that formulates size correction as geometric inference and planning, separating physical-size changes from their image-space realization. Using typical real-world object dimensions from a knowledge base and estimated scene geometry, it computes size, depth, and placement commands for an image editor controlled through spatial rotary positional embeddings.</p>
+        <p>To learn the associated appearance changes, we adapt the editor on only 2,468 paired renders from controlled 3D object transformations. The resulting editor outperforms prior geometry-aware editors in target fidelity and identity preservation on real-image edits. Combined with our geometric inference and planning front end, it matches a state-of-the-art VLM-based correction pipeline on GenScale at one-twentieth of the inference cost, and human raters prefer its corrections.</p></div>
   </section>
-  <div class="wrap"><div class="scale-rule" aria-hidden="true"></div></div>
-  <section class="wrap method section" id="method" aria-labelledby="method-heading">
-    <div class="section-intro"><h2 id="method-heading">How it <em>works</em></h2>
-      <p>A small object near the camera can occupy as many pixels as a large object farther away. PhyScale uses pose, depth and familiar object dimensions to decide what to resize and where it will fit.</p></div>
-    <div class="steps">
-      <article><div class="step-img"><img src="assets/observe.webp" loading="lazy" width="537" height="269" alt="Colored cuboids fit the orange, rabbit, laptop and 8-ball in the input image."></div><h3>Measure the scene</h3><p>The observer fits each object’s expected 3D dimensions to its visible outline. Here the rabbit is too small relative to the laptop.</p></article>
-      <article><div class="step-img"><img src="assets/plan.webp" loading="lazy" width="470" height="326" alt="Dashed outlines on the tabletop mark planned sizes for the rabbit, orange and 8-ball."></div><h3>Plan the correction</h3><p>The planner keeps the laptop fixed, enlarges the rabbit by 1.60× and shrinks the orange and 8-ball. It checks that each object fits and stays supported.</p></article>
-      <article><div class="step-img"><img src="assets/rabbit-corrected.webp" loading="lazy" width="640" height="640" alt="The corrected tabletop scene with a larger rabbit and smaller orange and 8-ball."></div><h3>Render the edit</h3><p>The editor shifts and scales object-token coordinates to follow the plan. Training on 2,468 paired 3D renders teaches it how contact, shadows and visibility change with the edit.</p></article>
-    </div>
-    <details class="abstract"><summary>Read the abstract</summary><p>Generated images can appear photorealistic while depicting objects at implausible relative physical sizes. Correcting these errors requires distinguishing physical size from its depth- and pose-dependent appearance. We introduce PhyScale, a framework that formulates size correction as geometric inference and planning, separating physical-size changes from their image-space realization. Using typical real-world object dimensions from a knowledge base and estimated scene geometry, it computes size, depth, and placement commands for an image editor controlled through spatial rotary positional embeddings. To learn the associated appearance changes, we adapt the editor on only 2,468 paired renders from controlled 3D object transformations. The resulting editor outperforms prior geometry-aware editors in target fidelity and identity preservation on real-image edits. Combined with our geometric inference and planning front end, it matches a state-of-the-art VLM-based correction pipeline on GenScale at one-twentieth of the inference cost, and human raters prefer its corrections.</p></details>
+
+  <section class="paper-section" id="method">
+    <h2>Method</h2>
+    <p class="lead">A small object near a camera can occupy as many pixels as a much larger object farther away. Given an image, object names and typical real-world dimensions, PhyScale estimates which relative sizes are implausible and finds a correction that fits the scene.</p>
+    <figure class="paper-figure">
+        <a class="figure-link" href="assets/pipeline.webp" aria-label="Open full-size figure. A geometric observer and planner compute size and placement commands for the RoPE-controlled editor.">
+          <img src="assets/pipeline.webp" width="2160" height="1041" loading="lazy" alt="A geometric observer and planner compute size and placement commands for the RoPE-controlled editor.">
+        </a>
+        <figcaption><strong>Pipeline overview.</strong> Enlarging the cone in place would overlap the guitar. Moving the cone farther back gives it a feasible destination.</figcaption>
+      </figure>
+    <h3>Separating physical size from projected size</h3>
+    <p>Under perspective, an object’s projected extent depends on its physical size, depth and pose. When the camera and object orientation stay fixed, the change in projected size is approximately the physical resize factor divided by the depth factor.</p>
+    <div class="equation" aria-label="Apparent scale equals the physical resize factor divided by the depth factor"><span>apparent scale</span><b>=</b><span class="fraction"><span>physical resize factor</span><span>depth factor</span></span></div>
+    <p>In the cone example above, PhyScale makes the cone 2.13× larger in the scene and moves it 1.91× farther from the camera. Its projected size grows by only 1.12×. The editor needs both the destination and this apparent scale to realize the physical correction.</p>
+    <ol class="stages">
+      <li><h3>Pose-aware observer</h3><p>The observer estimates the camera horizon and each object’s ground contact, orients a cuboid with the category’s known dimensions, and fits its projected extent to the instance mask. The fitted scale measures how large the object appears relative to its expected physical size.</p></li>
+      <li><h3>Geometric planner</h3><p>The planner distributes corrections across objects, then searches over depth and lateral position. It prioritizes support and collision avoidance, then considers framing, occlusion and the editor’s spatial resolution. Among feasible candidates it favors smaller changes to the image.</p></li>
+      <li><h3>RoPE-controlled editor</h3><p>The editor translates and scales the source object’s token coordinates using the spatial rotary positional embedding (RoPE) warp of RoPEMover. The warp specifies the projected destination inside Qwen-Image-Edit. Small targets are edited in a magnified local crop to give the model enough spatial tokens.</p></li>
+    </ol>
+    <figure class="paper-figure">
+        <a class="figure-link" href="assets/running-example.webp" aria-label="Open full-size figure. Fitted object sizes, candidate rabbit placements, the 8-ball token warp and the corrected tabletop scene.">
+          <img src="assets/running-example.webp" width="2200" height="679" loading="lazy" alt="Fitted object sizes, candidate rabbit placements, the 8-ball token warp and the corrected tabletop scene.">
+        </a>
+        <figcaption><strong>A multi-object correction.</strong> The planner keeps the laptop fixed, enlarges the rabbit by 1.60× and shrinks the orange and 8-ball to 0.77× and 0.63× their original physical sizes.</figcaption>
+      </figure>
+    <h3>Learning appearance changes from 3D edits</h3>
+    <p>With Kubric and Blender, we resize and reposition objects and render the entire scene again with the same camera, lighting and reference objects. The resulting 2,468 pairs from 624 scanned assets capture changes in contact, shadows and occlusion. They include changes in size alone, depth alone, joint edits and identity pairs. We train a rank-16 LoRA on Qwen-Image-Edit-2511 for ten epochs. Only the editor receives task-specific training.</p>
+    <figure class="paper-figure"><div class="training-grid"><img src="assets/training-pair-1.webp" width="776" height="384" loading="lazy" alt="The yellow bottle appears smaller in the destination render.">
+<img src="assets/training-pair-2.webp" width="776" height="384" loading="lazy" alt="A group of objects moves toward the foreground.">
+<img src="assets/training-pair-3.webp" width="776" height="384" loading="lazy" alt="A package moves behind a shoe.">
+<img src="assets/training-pair-4.webp" width="776" height="384" loading="lazy" alt="A package appears larger in the destination render."></div><figcaption><strong>Training pairs.</strong> Each pair shows the source on the left and the re-rendered destination on the right.</figcaption></figure>
   </section>
-  <section class="results section" id="results" aria-labelledby="results-heading"><div class="wrap">
-    <div class="section-intro"><h2 id="results-heading">Results on <em>GenScale</em></h2><p>Across seven image generators, PhyScale matches ReScale’s average size error at about one-twentieth of its estimated inference cost.</p></div>
-    <div id="baseline-picker" role="group" aria-label="Choose a baseline comparison" class="baseline-picker js-only"></div>
+
+  <section class="paper-section" id="results">
+    <h2>Experimental results</h2>
+    <nav class="result-nav" aria-label="Experiments"><a href="#genscale">GenScale correction</a><a href="#geometry">Observation and planning</a><a href="#editing">Real-image editing</a><a href="#ablations">Ablations</a></nav>
+    <section class="experiment" id="genscale"><h3>End-to-end correction on GenScale</h3>
+      <p>Across 2,800 images from seven generators, PhyScale reduces mean relation error from 0.910 to 0.640. The VLM-based ReScale pipeline reaches 0.649. Replacing VLM diagnosis and planning with geometric computation brings the estimated cost per image from $0.696 to $0.037. <a href="https://lingxiao-li.github.io/genscale/">GenScale benchmark ↗</a></p>
+      <div class="tables-pair"><div><div class="table-wrap"><table>
+        <caption>GenScale Task 1 · Mean relation error ↓</caption>
+        <thead><tr><th scope="col">Source generator</th><th scope="col">Original</th><th scope="col">ReScale</th><th scope="col">PhyScale</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Nano Banana 2</th><td>0.620</td><td><strong>0.459</strong></td><td>0.472</td></tr>
+          <tr><th scope="row">GPT-Image-2</th><td>0.707</td><td>0.557</td><td><strong>0.491</strong></td></tr>
+          <tr><th scope="row">Z-Image Turbo</th><td>0.898</td><td>0.682</td><td><strong>0.673</strong></td></tr>
+          <tr><th scope="row">Grok Imagine</th><td>0.787</td><td><strong>0.492</strong></td><td>0.514</td></tr>
+          <tr><th scope="row">Qwen-Image 2512</th><td>0.992</td><td><strong>0.581</strong></td><td>0.664</td></tr>
+          <tr><th scope="row">FLUX.2</th><td>1.188</td><td>0.824</td><td><strong>0.816</strong></td></tr>
+          <tr><th scope="row">SD3.5 Large</th><td>1.174</td><td>0.948</td><td><strong>0.851</strong></td></tr>
+          <tr class="key-row"><th scope="row">All seven</th><td>0.910</td><td>0.649</td><td><strong>0.640</strong></td></tr>
+        </tbody>
+      </table></div><p class="note">Over 8,001 relations, error is the mean of |<i>s</i> − 3|. A score of 3 denotes plausible size. Five Gemini votes are combined by unique mode or rounded median. Unjudgeable relations receive error 2.</p></div>
+        <div><div class="table-wrap"><table>
+        <caption>Pipeline efficiency · Mean per image</caption>
+        <thead><tr><th scope="col">Method</th><th scope="col">Time ↓</th><th scope="col">Est. cost ↓</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">ReScale</th><td>98.0 s</td><td>$0.696</td></tr>
+          <tr><th scope="row">PhyScale</th><td><strong>52.8 s</strong></td><td><strong>$0.037</strong></td></tr>
+        </tbody>
+      </table></div><p class="note">Measured on 30 shared inputs. Times sum observation, planning, editing and restoration. Costs are estimated per image.</p>
+        <h4>Independent judges</h4><p>On 700 shared sources, GPT and Claude also assign PhyScale lower source-averaged error than ReScale. The mean errors are 0.680 versus 0.733 for GPT and 0.583 versus 0.607 for Claude, using one vote per relation.</p></div></div>
+      <div id="baseline-picker" role="group" aria-label="Choose a baseline comparison" class="baseline-picker js-only"></div>
     <div class="triptych" aria-live="polite">
       <figure><img id="baseline-input" src="assets/zebra-input.webp" width="640" height="640" loading="lazy" alt="Input with an oversized pizza in front of a zebra."><figcaption>Original</figcaption></figure>
       <figure><img id="baseline-rescale" src="assets/zebra-rescale.webp" width="640" height="640" loading="lazy" alt="ReScale output for the zebra and pizza."><figcaption>ReScale</figcaption></figure>
       <figure><img id="baseline-physcale" src="assets/zebra-physcale.webp" width="640" height="640" loading="lazy" alt="PhyScale output for the zebra and pizza."><figcaption>PhyScale</figcaption></figure>
     </div>
     <p class="baseline-note" id="baseline-note" aria-live="polite">Both methods see the same input. PhyScale makes the pizza smaller relative to the zebra.</p>
-    <div class="measurement">
-      <div><h3>Accuracy and inference cost</h3><p>Size error averages 8,001 object relations across 2,800 images. Cost and time are per-image means on 30 shared inputs. Lower is better for all three metrics.</p><a href="https://lingxiao-li.github.io/genscale/">GenScale benchmark ↗</a></div>
-      <table><thead><tr><th scope="col">Method</th><th scope="col">Size error</th><th scope="col">Est. cost</th><th scope="col">Time</th></tr></thead><tbody><tr><th scope="row">Original</th><td>0.910</td><td>—</td><td>—</td></tr><tr><th scope="row">ReScale</th><td>0.649</td><td>$0.696</td><td>98.0 s</td></tr><tr class="ours"><th scope="row">PhyScale</th><td>0.640</td><td>$0.037</td><td>52.8 s</td></tr></tbody></table>
-    </div>
-    <p class="preference">Five blinded raters compared 105 pairs on which the methods differed. For naturalness, 323 votes favored PhyScale, 44 favored ReScale and 158 rated them the same.</p>
-  </div></section>
-  <section class="wrap citation section" id="citation" aria-labelledby="cite-heading">
-    <div><h2 id="cite-heading">Citation</h2></div>
-    <div class="bib"><button id="copy" class="js-only" type="button">Copy BibTeX</button><pre><code id="bibtex">@misc{li2026physcale,
+
+      <h4>Human evaluation</h4>
+      <p>Five blinded raters compared 105 image pairs sampled where the two methods produced different outputs. They favored PhyScale on relative size, content preservation and naturalness. The largest difference was in naturalness, with 323 votes for PhyScale, 44 for ReScale and 158 ties.</p>
+      <div class="table-wrap"><table>
+        <caption>Blinded human preference · 105 image pairs</caption>
+        <thead><tr><th scope="col">Criterion</th><th scope="col">PhyScale</th><th scope="col">ReScale</th><th scope="col">Same</th><th scope="col">Preference [95% CI]</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Relative size</th><td>195</td><td>78</td><td>252</td><td>+0.223 [+0.120, +0.320]</td></tr>
+          <tr><th scope="row">Content preservation</th><td>235</td><td>30</td><td>260</td><td>+0.390 [+0.297, +0.480]</td></tr>
+          <tr><th scope="row">Naturalness</th><td>323</td><td>44</td><td>158</td><td>+0.531 [+0.410, +0.644]</td></tr>
+        </tbody>
+      </table></div><p class="note">Positive preference favors PhyScale on a scale from −1 to +1. Brackets give 95% prompt-clustered bootstrap confidence intervals.</p>
+    </section>
+    <section class="experiment" id="geometry"><h3>Observation and placement under known geometry</h3>
+      <p>We construct 116 tabletop scenes in Blender and 109 matched photorealistic counterparts. Given the true object dimensions, an observer must identify the incorrectly sized object and predict its correction factor within 20%.</p>
+      <div class="geometry-grid"><div><div class="table-wrap"><table>
+        <caption>Observer accuracy · Correct object and scale factor</caption>
+        <thead><tr><th scope="col">Observer</th><th scope="col">Blender</th><th scope="col">Photorealistic</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Gemini 3.1 Pro</th><td>44.8%</td><td>38.5%</td></tr>
+          <tr><th scope="row">PhyScale (3D reconstruction)</th><td>45.7%</td><td><strong>47.7%</strong></td></tr>
+          <tr><th scope="row">PhyScale</th><td><strong>56.9%</strong></td><td>44.0%</td></tr>
+        </tbody>
+      </table></div>
+        <h4>Feasible placement</h4><p>Given the same observation and prescribed resize, PhyScale passes all automatic placement checks on 87.9% of the Blender scenes, compared with 80.2% for Gemini 3.1 Pro. Requiring full tabletop support gives pass rates of 75.9% and 69.0%, respectively.</p></div><figure class="paper-figure">
+        <a class="figure-link" href="assets/planner.webp" aria-label="Open full-size figure. A box and a bowl placed by the Gemini planner and the PhyScale planner.">
+          <img src="assets/planner.webp" width="1100" height="766" loading="lazy" alt="A box and a bowl placed by the Gemini planner and the PhyScale planner.">
+        </a>
+        <figcaption><strong>Placement after resizing.</strong> The Gemini plan puts the box beyond the tabletop and the bowl behind it. The geometric planner places both on the support surface.</figcaption>
+      </figure></div>
+    </section>
+    <section class="experiment" id="editing"><h3>Prescribed editing on real photographs</h3>
+      <p>On ObjectMover, every editor receives the same 188 requests to move or resize a real object. The paired destination photograph supplies ground truth for target fidelity. A separate comparison to the source object measures identity preservation.</p>
+      <figure class="paper-figure">
+        <a class="figure-link" href="assets/objectmover.webp" aria-label="Open full-size figure. Three real-image editing requests and outputs from PhyScale, RoPEMover, ObjectMover, ReScale, PhyEdit and Qwen-Image-Edit.">
+          <img src="assets/objectmover.webp" width="2200" height="1023" loading="lazy" alt="Three real-image editing requests and outputs from PhyScale, RoPEMover, ObjectMover, ReScale, PhyEdit and Qwen-Image-Edit.">
+        </a>
+        <figcaption><strong>Prescribed real-image edits.</strong> The input marks the source object and requested destination. All editors receive the same request.</figcaption>
+      </figure>
+      <div class="table-wrap"><table>
+        <caption>ObjectMover · Prescribed edits on real photographs</caption>
+        <thead><tr><th scope="col">Editor</th><th scope="col">Target DINO ↑</th><th scope="col">DreamSim ↓</th><th scope="col">Identity DINO ↑</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Qwen-Image-Edit (structured prompt)</th><td>0.696</td><td>0.326</td><td>0.653</td></tr>
+          <tr><th scope="row">PhyEdit</th><td>0.791</td><td>0.216</td><td>0.738</td></tr>
+          <tr><th scope="row">ReScale editor</th><td>0.814</td><td>0.177</td><td>0.786</td></tr>
+          <tr><th scope="row">ObjectMover</th><td>0.867</td><td>0.140</td><td>0.813</td></tr>
+          <tr><th scope="row">RoPEMover</th><td>0.861</td><td>0.139</td><td>0.802</td></tr>
+          <tr class="key-row"><th scope="row">PhyScale</th><td><strong>0.899</strong></td><td><strong>0.105</strong></td><td><strong>0.856</strong></td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">Target DINO and DreamSim compare edited and ground-truth destination crops. Identity DINO compares the edited object with its source crop. Arrows indicate the preferred direction.</p>
+      <p>PhyScale leads on all three metrics. In the human evaluation, raters marked 89.9% of its requests complete, compared with 78.0% for ReScale and 74.0% for ObjectMover.</p>
+    </section>
+    <section class="experiment" id="ablations"><h3>What drives editing fidelity?</h3>
+      <div class="geometry-grid"><div><h4>Positional commands</h4><p>With the backbone, training examples and update budget held fixed, communicating destinations through RoPE increases target DINO from 0.439 with text-box instructions to 0.895 on ObjectMover.</p>
+      <h4>Size–depth supervision</h4><p>On held-out renders, training with size and depth changes gives a silhouette IoU of 0.771, compared with 0.629 for translation-only training. Re-rendering the full scene also teaches the editor how shadows and occlusions change when an object moves.</p></div><figure class="paper-figure">
+        <a class="figure-link" href="assets/supervision.webp" aria-label="Open full-size figure. Comparisons of training with 2.5D composites and full-scene 3D renders on two real-image edits.">
+          <img src="assets/supervision.webp" width="1150" height="801" loading="lazy" alt="Comparisons of training with 2.5D composites and full-scene 3D renders on two real-image edits.">
+        </a>
+        <figcaption><strong>Effects of training supervision.</strong> The 2.5D-trained editor leaves an old shadow or object remnant at the source location. The 3D-trained editor updates those regions.</figcaption>
+      </figure></div>
+    </section>
+  </section>
+
+  <section class="paper-section citation" id="citation"><h2>BibTeX</h2><div class="bib"><button id="copy" class="js-only" type="button">Copy BibTeX</button><pre><code id="bibtex">@misc{li2026physcale,
   title  = {{PhyScale}: Physically Grounded Object Size Correction in Text-to-Image Generation},
   author = {Lingxiao Li and Ledell Wu and Boqing Gong},
   year   = {2026}
 }</code></pre><span id="copy-status" class="sr" role="status"></span></div>
-  </section>
+</section>
 </main><footer class="wrap"><span>PhyScale</span><a href="#top">Back to top ↑</a></footer>
 </body></html>
