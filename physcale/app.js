@@ -55,15 +55,20 @@ function moveSlider() {
   slider.setAttribute('aria-valuetext', slider.value + ' percent original');
 }
 slider.addEventListener('input', moveSlider);
-for (const button of document.querySelectorAll('[data-mode]')) {
-  button.addEventListener('click', () => {
-    const wipe = button.dataset.mode === 'wipe';
-    $('comparison').classList.toggle('wipe', wipe);
-    slider.hidden = !wipe;
-    for (const mode of document.querySelectorAll('[data-mode]')) mode.setAttribute('aria-pressed', String(mode === button));
-    moveSlider();
-  });
+const modeButtons = document.querySelectorAll('[data-mode]');
+function setMode(mode) {
+  const wipe = mode === 'wipe';
+  $('comparison').classList.toggle('wipe', wipe);
+  slider.hidden = !wipe;
+  for (const button of modeButtons) {
+    button.setAttribute('aria-pressed', String(button.dataset.mode === mode));
+  }
+  moveSlider();
 }
+for (const button of modeButtons) {
+  button.addEventListener('click', () => setMode(button.dataset.mode));
+}
+setMode('wipe');
 $('copy').addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText($('bibtex').textContent.trim());
